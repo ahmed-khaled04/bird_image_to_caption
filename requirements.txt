@@ -1,0 +1,14 @@
+# Task 1.1: data loading and EDA
+datasets
+torch
+torchvision
+Pillow
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+imagehash
+pyyaml
+tqdm
+pyspellchecker
