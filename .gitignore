@@ -1,4 +1,9 @@
 venv/
 __pycache__/
 *.pyc
-CONTEXT.MD
+CONTEXT.md
+/data/
+mlruns/
+wandb/
+*.pt
+*.pth
