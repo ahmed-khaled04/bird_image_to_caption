@@ -1,0 +1,14 @@
+split_a,index_a,file_a,label_a,split_b,index_b,file_b,label_b,phash_distance,dhash_distance,identical_file,kind,same_label
+test,565,Chuck_Will_Widow_0042_796983.jpg,21,test,2974,Whip_Poor_Will_0002_796427.jpg,104,0,0,False,test-test,False
+test,2368,Red_Legged_Kittiwake_0020_795439.jpg,83,test,2374,Red_Legged_Kittiwake_0042_795457.jpg,83,0,0,False,test-test,True
+test,4004,Summer_Tanager_0047_140164.jpg,139,test,4026,Summer_Tanager_0124_139963.jpg,139,0,1,False,test-test,True
+test,3264,Brewer_Sparrow_0037_107442.jpg,114,test,3276,Brewer_Sparrow_0065_107419.jpg,114,2,1,False,test-test,True
+test,816,Black_Billed_Cuckoo_0043_795324.jpg,30,test,828,Black_Billed_Cuckoo_0089_795322.jpg,30,4,8,False,test-test,True
+train,774,Bronzed_Cowbird_0074_24045.jpg,25,test,661,Bronzed_Cowbird_0025_796213.jpg,25,0,0,False,train-test,True
+train,5277,Prothonotary_Warbler_0020_174122.jpg,176,test,5115,Prothonotary_Warbler_0105_174097.jpg,176,2,1,False,train-test,True
+train,4972,Golden_Winged_Warbler_0078_794827.jpg,165,test,4779,Golden_Winged_Warbler_0065_794842.jpg,165,6,7,False,train-test,True
+train,5903,Marsh_Wren_0141_188796.jpg,196,test,5696,Marsh_Wren_0108_188788.jpg,196,6,6,False,train-test,True
+train,2866,Hooded_Oriole_0076_90895.jpg,95,test,2735,Hooded_Oriole_0077_90886.jpg,95,8,10,False,train-test,True
+train,1712,Pigeon_Guillemot_0018_40195.jpg,57,train,1731,Pigeon_Guillemot_0081_40339.jpg,57,0,0,True,train-train,True
+train,5315,Swainson_Warbler_0022_794868.jpg,177,train,5333,Swainson_Warbler_0049_794880.jpg,177,0,0,False,train-train,True
+train,46,Laysan_Albatross_0065_809.jpg,1,train,57,Laysan_Albatross_0096_673.jpg,1,4,0,False,train-train,True
