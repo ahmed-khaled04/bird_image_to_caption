@@ -2,7 +2,7 @@ import argparse
 from pathlib import Path
 
 from src.data.loader import load_cub, summarize
-from src.eda import run_class_eda, run_image_eda
+from src.eda import run_caption_eda, run_class_eda, run_image_eda
 
 
 def main() -> None:
@@ -11,7 +11,7 @@ def main() -> None:
 
     eda = sub.add_parser("eda", help="Load the dataset and run exploratory data analysis")
     eda.add_argument("--cache-dir", default="data/hf_cache", help="Where Hugging Face stores the dataset")
-    eda.add_argument("--part", choices=["summary", "images", "classes"], default="summary", help="Which part of the EDA to run")
+    eda.add_argument("--part", choices=["summary", "images", "classes", "captions"], default="summary", help="Which part of the EDA to run")
     eda.add_argument("--fig-dir", default="outputs/figures", help="Where to save figures")
     eda.add_argument("--table-dir", default="outputs/tables", help="Where to save CSV tables")
 
@@ -24,6 +24,8 @@ def main() -> None:
             run_image_eda(splits, Path(args.fig_dir), Path(args.table_dir))
         elif args.part == "classes":
             run_class_eda(splits, Path(args.fig_dir), Path(args.table_dir))
+        elif args.part == "captions":
+            run_caption_eda(splits, Path(args.fig_dir), Path(args.table_dir))
 
 
 if __name__ == "__main__":
