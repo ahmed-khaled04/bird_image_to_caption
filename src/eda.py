@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.data.class_stats import class_counts, imbalance_summary
 from src.data.image_stats import collect_image_stats, near_duplicate_pairs
 from src.data.loader import class_names
 from src.visualization import eda_plots
@@ -24,6 +25,38 @@ def run_image_eda(splits, fig_dir: Path, table_dir: Path) -> None:
     eda_plots.plot_image_modes(stats, fig_dir / "images_modes.png")
     eda_plots.plot_grayscale_images(splits, stats, names, fig_dir / "images_grayscale.png")
     eda_plots.plot_duplicate_pairs(splits, pairs, fig_dir / "images_duplicates.png")
+
+
+def run_class_eda(splits, fig_dir: Path, table_dir: Path) -> None:
+    split_names = list(splits.keys())
+    counts = class_counts(splits, class_names(splits["train"]))
+    summary = imbalance_summary(counts, split_names)
+
+    table_dir.mkdir(parents=True, exist_ok=True)
+    counts.to_csv(table_dir / "class_counts.csv")
+
+    print_class_report(counts, summary, split_names)
+
+    eda_plots.plot_class_distribution(counts, split_names, fig_dir / "classes_distribution.png")
+    eda_plots.plot_smallest_classes(counts, split_names, fig_dir / "classes_smallest.png")
+    eda_plots.plot_family_sizes(counts, fig_dir / "classes_families.png")
+
+
+def print_class_report(counts: pd.DataFrame, summary: pd.DataFrame, split_names: list) -> None:
+    print("\n=== images per class")
+    print(summary.to_string())
+
+    for split_name in split_names:
+        histogram = counts[split_name].value_counts().sort_index()
+        print(f"\n{split_name}: how many species have N images")
+        print(", ".join(f"{n}: {k}" for n, k in histogram.items()))
+
+    print(f"\n=== species with the fewest {split_names[-1]} images")
+    print(counts.nsmallest(10, split_names[-1])[split_names].to_string())
+
+    families = counts.groupby("family").size()
+    print(f"\n=== {len(families)} families; largest: "
+          + ", ".join(f"{name} {size}" for name, size in families.nlargest(5).items()))
 
 
 def print_image_report(stats: pd.DataFrame, pairs: pd.DataFrame) -> None:

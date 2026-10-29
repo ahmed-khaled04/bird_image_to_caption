@@ -84,6 +84,47 @@ def plot_image_modes(stats: pd.DataFrame, path: Path) -> None:
     save_figure(fig, path)
 
 
+def plot_class_distribution(counts: pd.DataFrame, split_names: list, path: Path) -> None:
+    """Images per species for each split, species sorted by their test count."""
+    order = counts.sort_values(split_names[::-1]).index
+    fig, axes = plt.subplots(len(split_names), 1, figsize=(14, 3 * len(split_names)), sharex=True,
+                             sharey=True, layout="constrained")
+    for ax, split_name, color in zip(axes, split_names, ["tab:blue", "tab:orange"]):
+        values = counts.loc[order, split_name]
+        ax.bar(range(len(order)), values, width=1.0, color=color)
+        ax.axhline(values.mean(), ls="--", c="k", lw=0.8)
+        ax.set_title(f"{split_name}: {values.min()} to {values.max()} images per species, mean {values.mean():.1f}")
+        ax.set_ylabel("images")
+    axes[-1].set_xlabel(f"{len(order)} species, sorted by {split_names[-1]} count")
+    fig.suptitle("Class distribution")
+    save_figure(fig, path)
+
+
+def plot_smallest_classes(counts: pd.DataFrame, split_names: list, path: Path, n: int = 15) -> None:
+    """The species with the fewest test images, with their train count for comparison."""
+    smallest = counts.nsmallest(n, split_names[-1]).sort_values(split_names[-1], ascending=False)
+    fig, ax = plt.subplots(figsize=(8, 0.35 * n + 1.5), layout="constrained")
+    smallest[split_names].plot.barh(ax=ax, color=["tab:blue", "tab:orange"])
+    for container in ax.containers:
+        ax.bar_label(container, fontsize=7)
+    ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1))  # outside the bars, so no label is hidden
+    ax.set_title(f"{n} species with the fewest {split_names[-1]} images")
+    ax.set_xlabel("images")
+    ax.set_ylabel("")
+    save_figure(fig, path)
+
+
+def plot_family_sizes(counts: pd.DataFrame, path: Path, top: int = 15) -> None:
+    """How many species share a family name: many similar species make the task fine-grained."""
+    sizes = counts.groupby("family").size().nlargest(top).sort_values()
+    fig, ax = plt.subplots(figsize=(7, 0.35 * top + 1.5), layout="constrained")
+    bars = ax.barh(sizes.index, sizes.values, color="tab:green")
+    ax.bar_label(bars, fontsize=8)
+    ax.set_title(f"Species per family (top {top} of {counts['family'].nunique()} families)")
+    ax.set_xlabel("species")
+    save_figure(fig, path)
+
+
 def plot_duplicate_pairs(splits, pairs: pd.DataFrame, path: Path) -> None:
     """Show every duplicate pair side by side so the detection can be checked by eye."""
     if pairs.empty:

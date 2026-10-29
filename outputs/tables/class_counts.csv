@@ -1,0 +1,201 @@
+species,train,test,family
+Black footed Albatross,30,30,Albatross
+Laysan Albatross,30,30,Albatross
+Sooty Albatross,30,28,Albatross
+Groove billed Ani,30,30,Ani
+Crested Auklet,30,14,Auklet
+Least Auklet,30,11,Auklet
+Parakeet Auklet,30,23,Auklet
+Rhinoceros Auklet,30,18,Auklet
+Brewer Blackbird,30,29,Blackbird
+Red winged Blackbird,30,30,Blackbird
+Rusty Blackbird,30,30,Blackbird
+Yellow headed Blackbird,30,26,Blackbird
+Bobolink,30,30,Bobolink
+Indigo Bunting,30,30,Bunting
+Lazuli Bunting,30,28,Bunting
+Painted Bunting,30,28,Bunting
+Cardinal,30,27,Cardinal
+Spotted Catbird,30,15,Catbird
+Gray Catbird,30,29,Catbird
+Yellow breasted Chat,30,29,Chat
+Eastern Towhee,30,30,Towhee
+Chuck will Widow,30,26,Widow
+Brandt Cormorant,30,29,Cormorant
+Red faced Cormorant,30,22,Cormorant
+Pelagic Cormorant,30,30,Cormorant
+Bronzed Cowbird,30,30,Cowbird
+Shiny Cowbird,30,30,Cowbird
+Brown Creeper,30,29,Creeper
+American Crow,30,30,Crow
+Fish Crow,30,30,Crow
+Black billed Cuckoo,30,30,Cuckoo
+Mangrove Cuckoo,30,23,Cuckoo
+Yellow billed Cuckoo,30,29,Cuckoo
+Gray crowned Rosy Finch,30,29,Finch
+Purple Finch,30,30,Finch
+Northern Flicker,30,30,Flicker
+Acadian Flycatcher,30,29,Flycatcher
+Great Crested Flycatcher,30,30,Flycatcher
+Least Flycatcher,30,29,Flycatcher
+Olive sided Flycatcher,30,30,Flycatcher
+Scissor tailed Flycatcher,30,30,Flycatcher
+Vermilion Flycatcher,30,30,Flycatcher
+Yellow bellied Flycatcher,30,29,Flycatcher
+Frigatebird,30,30,Frigatebird
+Northern Fulmar,30,30,Fulmar
+Gadwall,30,30,Gadwall
+American Goldfinch,30,30,Goldfinch
+European Goldfinch,30,30,Goldfinch
+Boat tailed Grackle,30,30,Grackle
+Eared Grebe,30,30,Grebe
+Horned Grebe,30,30,Grebe
+Pied billed Grebe,30,30,Grebe
+Western Grebe,30,30,Grebe
+Blue Grosbeak,30,30,Grosbeak
+Evening Grosbeak,30,30,Grosbeak
+Pine Grosbeak,30,30,Grosbeak
+Rose breasted Grosbeak,30,30,Grosbeak
+Pigeon Guillemot,30,28,Guillemot
+California Gull,30,30,Gull
+Glaucous winged Gull,30,29,Gull
+Heermann Gull,30,30,Gull
+Herring Gull,30,30,Gull
+Ivory Gull,30,30,Gull
+Ring billed Gull,30,30,Gull
+Slaty backed Gull,30,20,Gull
+Western Gull,30,30,Gull
+Anna Hummingbird,30,30,Hummingbird
+Ruby throated Hummingbird,30,30,Hummingbird
+Rufous Hummingbird,30,30,Hummingbird
+Green Violetear,30,30,Violetear
+Long tailed Jaeger,30,30,Jaeger
+Pomarine Jaeger,30,30,Jaeger
+Blue Jay,30,30,Jay
+Florida Jay,30,30,Jay
+Green Jay,30,27,Jay
+Dark eyed Junco,30,30,Junco
+Tropical Kingbird,30,30,Kingbird
+Gray Kingbird,30,29,Kingbird
+Belted Kingfisher,30,30,Kingfisher
+Green Kingfisher,30,30,Kingfisher
+Pied Kingfisher,30,30,Kingfisher
+Ringed Kingfisher,30,30,Kingfisher
+White breasted Kingfisher,30,30,Kingfisher
+Red legged Kittiwake,30,23,Kittiwake
+Horned Lark,30,30,Lark
+Pacific Loon,30,30,Loon
+Mallard,30,30,Mallard
+Western Meadowlark,30,30,Meadowlark
+Hooded Merganser,30,30,Merganser
+Red breasted Merganser,30,30,Merganser
+Mockingbird,30,30,Mockingbird
+Nighthawk,30,30,Nighthawk
+Clark Nutcracker,30,30,Nutcracker
+White breasted Nuthatch,30,30,Nuthatch
+Baltimore Oriole,30,30,Oriole
+Hooded Oriole,30,30,Oriole
+Orchard Oriole,30,29,Oriole
+Scott Oriole,30,30,Oriole
+Ovenbird,30,30,Ovenbird
+Brown Pelican,30,30,Pelican
+White Pelican,30,20,Pelican
+Western Wood Pewee,30,30,Pewee
+Sayornis,30,30,Sayornis
+American Pipit,30,30,Pipit
+Whip poor Will,30,19,Will
+Horned Puffin,30,30,Puffin
+Common Raven,29,30,Raven
+White necked Raven,30,30,Raven
+American Redstart,30,30,Redstart
+Geococcyx,30,30,Geococcyx
+Loggerhead Shrike,30,30,Shrike
+Great Grey Shrike,30,30,Shrike
+Baird Sparrow,30,20,Sparrow
+Black throated Sparrow,30,30,Sparrow
+Brewer Sparrow,30,29,Sparrow
+Chipping Sparrow,30,30,Sparrow
+Clay colored Sparrow,30,29,Sparrow
+House Sparrow,30,30,Sparrow
+Field Sparrow,30,29,Sparrow
+Fox Sparrow,30,30,Sparrow
+Grasshopper Sparrow,30,30,Sparrow
+Harris Sparrow,30,30,Sparrow
+Henslow Sparrow,30,30,Sparrow
+Le Conte Sparrow,30,29,Sparrow
+Lincoln Sparrow,30,29,Sparrow
+Nelson Sharp tailed Sparrow,29,30,Sparrow
+Savannah Sparrow,30,30,Sparrow
+Seaside Sparrow,30,30,Sparrow
+Song Sparrow,30,30,Sparrow
+Tree Sparrow,30,30,Sparrow
+Vesper Sparrow,30,30,Sparrow
+White crowned Sparrow,30,30,Sparrow
+White throated Sparrow,30,30,Sparrow
+Cape Glossy Starling,30,30,Starling
+Bank Swallow,29,30,Swallow
+Barn Swallow,30,30,Swallow
+Cliff Swallow,30,30,Swallow
+Tree Swallow,30,30,Swallow
+Scarlet Tanager,30,30,Tanager
+Summer Tanager,30,30,Tanager
+Artic Tern,29,29,Tern
+Black Tern,30,30,Tern
+Caspian Tern,30,30,Tern
+Common Tern,30,30,Tern
+Elegant Tern,30,30,Tern
+Forsters Tern,30,30,Tern
+Least Tern,30,30,Tern
+Green tailed Towhee,30,30,Towhee
+Brown Thrasher,30,29,Thrasher
+Sage Thrasher,30,30,Thrasher
+Black capped Vireo,30,21,Vireo
+Blue headed Vireo,30,30,Vireo
+Philadelphia Vireo,30,29,Vireo
+Red eyed Vireo,30,30,Vireo
+Warbling Vireo,30,30,Vireo
+White eyed Vireo,30,30,Vireo
+Yellow throated Vireo,30,29,Vireo
+Bay breasted Warbler,30,30,Warbler
+Black and white Warbler,30,30,Warbler
+Black throated Blue Warbler,30,29,Warbler
+Blue winged Warbler,30,30,Warbler
+Canada Warbler,30,30,Warbler
+Cape May Warbler,30,30,Warbler
+Cerulean Warbler,30,30,Warbler
+Chestnut sided Warbler,30,30,Warbler
+Golden winged Warbler,30,29,Warbler
+Hooded Warbler,30,30,Warbler
+Kentucky Warbler,30,29,Warbler
+Magnolia Warbler,30,29,Warbler
+Mourning Warbler,30,30,Warbler
+Myrtle Warbler,30,30,Warbler
+Nashville Warbler,30,30,Warbler
+Orange crowned Warbler,30,30,Warbler
+Palm Warbler,30,30,Warbler
+Pine Warbler,30,30,Warbler
+Prairie Warbler,30,30,Warbler
+Prothonotary Warbler,30,30,Warbler
+Swainson Warbler,30,26,Warbler
+Tennessee Warbler,30,29,Warbler
+Wilson Warbler,30,30,Warbler
+Worm eating Warbler,30,29,Warbler
+Yellow Warbler,30,30,Warbler
+Northern Waterthrush,30,30,Waterthrush
+Louisiana Waterthrush,30,30,Waterthrush
+Bohemian Waxwing,30,30,Waxwing
+Cedar Waxwing,30,30,Waxwing
+American Three toed Woodpecker,30,20,Woodpecker
+Pileated Woodpecker,30,30,Woodpecker
+Red bellied Woodpecker,30,30,Woodpecker
+Red cockaded Woodpecker,29,29,Woodpecker
+Red headed Woodpecker,30,30,Woodpecker
+Downy Woodpecker,30,30,Woodpecker
+Bewick Wren,30,30,Wren
+Cactus Wren,30,30,Wren
+Carolina Wren,30,30,Wren
+House Wren,29,30,Wren
+Marsh Wren,30,30,Wren
+Rock Wren,30,30,Wren
+Winter Wren,30,30,Wren
+Common Yellowthroat,30,30,Yellowthroat
