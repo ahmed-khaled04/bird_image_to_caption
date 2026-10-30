@@ -1,9 +1,34 @@
+# environments
 venv/
+.venv/
+env/
+
+# python
 __pycache__/
 *.pyc
-CONTEXT.md
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# datasets and cleaned splits (large, rebuilt by the CLI)
 /data/
+
+# experiment tracking
 mlruns/
 wandb/
+
+# model weights and checkpoints (shared through Google Drive)
 *.pt
 *.pth
+*.ckpt
+*.safetensors
+outputs/checkpoints/
+
+# editors and OS
+.DS_Store
+.idea/
+.vscode/
+
+# local notes
+CONTEXT.md
+CONTEXT.MD
