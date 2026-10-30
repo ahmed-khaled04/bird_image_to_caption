@@ -32,3 +32,4 @@ outputs/checkpoints/
 # local notes
 CONTEXT.md
 CONTEXT.MD
+/outputs/dry_run/

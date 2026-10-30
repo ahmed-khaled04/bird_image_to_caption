@@ -2,10 +2,13 @@ import argparse
 import sys
 from pathlib import Path
 
+import yaml
+
 from src.augmentation import run_augmentation_demo
 from src.cleaning import run_cleaning
 from src.data.loader import load_cub, summarize
 from src.eda import run_caption_eda, run_class_eda, run_image_eda
+from src.tuning import run_tuning, synthetic_objective
 
 
 def main() -> None:
@@ -41,6 +44,14 @@ def main() -> None:
     augment.add_argument("--seed", type=int, default=0, help="Seed for the image choice and the random augmentation")
     augment.add_argument("--fig-dir", default="outputs/figures", help="Where to save the figure")
 
+    tune = sub.add_parser("tune", help="Grid search and random search over the classifier hyperparameters, then compare them")
+    tune.add_argument("--config", default="configs/tuning.yaml", help="Encoder, epochs per trial and search spaces")
+    tune.add_argument("--encoder", help="Override the encoder in the config")
+    tune.add_argument("--dry-run", action="store_true",
+                      help="Score trials with a fast synthetic function instead of training, to test the pipeline")
+    tune.add_argument("--fig-dir", help="Where to save figures (default outputs/figures, or outputs/dry_run with --dry-run)")
+    tune.add_argument("--table-dir", help="Where to save CSV tables (default outputs/tables, or outputs/dry_run with --dry-run)")
+
     args = parser.parse_args()
     if args.command == "eda":
         splits = load_cub(args.cache_dir)
@@ -58,6 +69,14 @@ def main() -> None:
     elif args.command == "augment":
         run_augmentation_demo(load_cub(args.cache_dir), Path(args.fig_dir), args.index, args.n_images,
                               args.n_augmented, args.image_size, args.seed)
+    elif args.command == "tune":
+        config = yaml.safe_load(Path(args.config).read_text())
+        if args.encoder:
+            config["encoder"] = args.encoder
+        if not args.dry_run:
+            parser.error("training is not connected to the search yet; use --dry-run for now")
+        out = "outputs/dry_run"
+        run_tuning(config, synthetic_objective, Path(args.table_dir or out), Path(args.fig_dir or out))
 
 
 if __name__ == "__main__":
