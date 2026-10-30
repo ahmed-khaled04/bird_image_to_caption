@@ -91,3 +91,14 @@ def vocabulary_coverage(train_words: Counter, test_words: Counter, max_min_count
             "test_unk_rate": sum(count for word, count in test_words.items() if word not in vocab) / test_total,
         })
     return pd.DataFrame(rows)
+
+
+def caption_problems(cleaned: list) -> dict:
+    """Problems left after cleaning, one count each. Every value should be 0."""
+    valid = re.compile(r"[a-z]+( [a-z]+)*")  # lowercase words separated by single spaces
+    return {
+        "images without captions": sum(1 for captions in cleaned if not captions),
+        "captions that are not lowercase letters and single spaces":
+            sum(1 for captions in cleaned for caption in captions if not valid.fullmatch(caption)),
+        "images with a repeated caption": sum(1 for captions in cleaned if len(set(captions)) != len(captions)),
+    }

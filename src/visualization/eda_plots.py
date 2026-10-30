@@ -266,3 +266,16 @@ def plot_vocab_coverage(coverage: pd.DataFrame, path: Path) -> None:
     unk.set_ylabel("test words that become <unk> (%)", color="tab:red")
     ax.set_title("Caption vocabulary: size vs coverage")
     save_figure(fig, path)
+
+
+def plot_split_class_counts(counts: pd.DataFrame, split_names: list, path: Path) -> None:
+    """For each split: how many species have N images. Shows the validation split keeps all species."""
+    fig, axes = plt.subplots(1, len(split_names), figsize=(5 * len(split_names), 4), layout="constrained")
+    for ax, split_name in zip(axes, split_names):
+        histogram = counts[split_name].value_counts().sort_index()
+        bars = ax.bar(histogram.index, histogram.values)
+        ax.bar_label(bars, fontsize=8)
+        ax.set_title(f"{split_name}: {int(counts[split_name].sum())} images, {int((counts[split_name] > 0).sum())} species")
+        ax.set_xlabel("images per species")
+        ax.set_ylabel("species")
+    save_figure(fig, path)
