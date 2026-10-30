@@ -7,13 +7,20 @@ from src.data import caption_stats
 from src.data.class_stats import class_counts
 from src.data.loader import class_names
 from src.data.prepare import prepare_splits
+from src.data.splits import duplicate_train_files
 from src.eda import run_caption_eda
 from src.visualization import eda_plots
 
 
 def run_cleaning(splits, val_fraction: float, seed: int, out_dir: Path, fig_dir: Path, table_dir: Path,
-                 plots: bool = True) -> None:
-    data = prepare_splits(splits["train"], splits["test"], val_fraction, seed)
+                 duplicates_path: Path, plots: bool = True) -> None:
+    if not duplicates_path.exists():
+        raise SystemExit(f"{duplicates_path} not found: run `python -m src.cli eda --part images` first")
+    drop_files = duplicate_train_files(pd.read_csv(duplicates_path))
+    print(f"\n=== dropping {len(drop_files)} duplicate train images before splitting (test is not changed)")
+    print("\n".join(sorted(drop_files)))
+
+    data = prepare_splits(splits["train"], splits["test"], val_fraction, seed, drop_files)
     split_names = list(data.keys())
 
     print_cleaning_report(data)
@@ -45,9 +52,11 @@ def print_cleaning_report(data) -> None:
         raw, cleaned = list(split["description"]), list(split["captions"])
         funnel = caption_stats.cleaning_funnel(caption_stats.split_lines(raw), cleaned)
         per_image = pd.Series([len(captions) for captions in cleaned])
+        long_enough = funnel.iloc[2]  # captions with at least MIN_WORDS words
         rows[name] = {"images": len(cleaned), **funnel.to_dict(),
                       "empty dropped": int(funnel["lines after split"] - funnel["non-empty"]),
-                      "duplicates dropped": int(funnel["non-empty"] - funnel["unique (kept)"]),
+                      "too short dropped": int(funnel["non-empty"] - long_enough),
+                      "duplicates dropped": int(long_enough - funnel["unique (kept)"]),
                       "min per image": per_image.min(), "max per image": per_image.max()}
     print(pd.DataFrame(rows).to_string())
 

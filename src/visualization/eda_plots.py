@@ -178,8 +178,8 @@ def plot_duplicates_per_image(per_image: pd.DataFrame, path: Path) -> None:
 
 def plot_cleaning_funnel(funnel: pd.Series, path: Path) -> None:
     """Caption count after each cleaning stage."""
-    fig, ax = plt.subplots(figsize=(6, 4), layout="constrained")
-    bars = ax.bar(funnel.index, funnel.values, color=["tab:gray", "tab:blue", "tab:green"])
+    fig, ax = plt.subplots(figsize=(8, 4), layout="constrained")
+    bars = ax.bar(funnel.index, funnel.values, color=["tab:gray", "tab:blue", "tab:cyan", "tab:green"])
     ax.bar_label(bars)
     ax.set_ylabel("captions")
     ax.set_title("Caption count at each cleaning stage (train)")

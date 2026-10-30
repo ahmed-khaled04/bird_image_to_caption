@@ -1,4 +1,5 @@
 import argparse
+import sys
 from pathlib import Path
 
 from src.augmentation import run_augmentation_demo
@@ -8,6 +9,9 @@ from src.eda import run_caption_eda, run_class_eda, run_image_eda
 
 
 def main() -> None:
+    # captions contain characters like U+FFFD; print them as � instead of crashing on
+    # consoles or redirected output that cannot encode them (e.g. cp1252 on Windows)
+    sys.stdout.reconfigure(errors="backslashreplace")
     parser = argparse.ArgumentParser(prog="python -m src.cli")
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -24,6 +28,8 @@ def main() -> None:
     clean.add_argument("--out-dir", default="data/processed", help="Where to save the cleaned splits")
     clean.add_argument("--fig-dir", default="outputs/figures", help="Where to save figures")
     clean.add_argument("--table-dir", default="outputs/tables", help="Where to save CSV tables")
+    clean.add_argument("--duplicates", default="outputs/tables/duplicate_pairs.csv",
+                       help="Duplicate image pairs from `eda --part images`; their train copies are dropped")
     clean.add_argument("--no-plots", action="store_true", help="Skip the figures")
 
     augment = sub.add_parser("augment", help="Save a figure of train images before and after the train augmentation")
@@ -48,7 +54,7 @@ def main() -> None:
             run_caption_eda(splits, Path(args.fig_dir), Path(args.table_dir))
     elif args.command == "clean":
         run_cleaning(load_cub(args.cache_dir), args.val_fraction, args.seed, Path(args.out_dir),
-                     Path(args.fig_dir), Path(args.table_dir), plots=not args.no_plots)
+                     Path(args.fig_dir), Path(args.table_dir), Path(args.duplicates), plots=not args.no_plots)
     elif args.command == "augment":
         run_augmentation_demo(load_cub(args.cache_dir), Path(args.fig_dir), args.index, args.n_images,
                               args.n_augmented, args.image_size, args.seed)

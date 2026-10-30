@@ -1,187 +1,187 @@
 species,train,validation,test,family
 Black footed Albatross,25,5,30,Albatross
-Laysan Albatross,26,4,30,Albatross
-Sooty Albatross,25,5,28,Albatross
+Laysan Albatross,25,4,30,Albatross
+Sooty Albatross,26,4,28,Albatross
 Groove billed Ani,25,5,30,Ani
 Crested Auklet,25,5,14,Auklet
 Least Auklet,25,5,11,Auklet
 Parakeet Auklet,26,4,23,Auklet
-Rhinoceros Auklet,25,5,18,Auklet
+Rhinoceros Auklet,26,4,18,Auklet
 Brewer Blackbird,26,4,29,Blackbird
-Red winged Blackbird,26,4,30,Blackbird
-Rusty Blackbird,25,5,30,Blackbird
+Red winged Blackbird,25,5,30,Blackbird
+Rusty Blackbird,26,4,30,Blackbird
 Yellow headed Blackbird,26,4,26,Blackbird
-Bobolink,26,4,30,Bobolink
-Indigo Bunting,26,4,30,Bunting
+Bobolink,25,5,30,Bobolink
+Indigo Bunting,25,5,30,Bunting
 Lazuli Bunting,25,5,28,Bunting
 Painted Bunting,25,5,28,Bunting
-Cardinal,25,5,27,Cardinal
-Spotted Catbird,26,4,15,Catbird
+Cardinal,26,4,27,Cardinal
+Spotted Catbird,25,5,15,Catbird
 Gray Catbird,25,5,29,Catbird
-Yellow breasted Chat,25,5,29,Chat
-Eastern Towhee,26,4,30,Towhee
+Yellow breasted Chat,26,4,29,Chat
+Eastern Towhee,25,5,30,Towhee
 Chuck will Widow,26,4,26,Widow
-Brandt Cormorant,26,4,29,Cormorant
+Brandt Cormorant,25,5,29,Cormorant
 Red faced Cormorant,25,5,22,Cormorant
-Pelagic Cormorant,25,5,30,Cormorant
-Bronzed Cowbird,25,5,30,Cowbird
+Pelagic Cormorant,26,4,30,Cormorant
+Bronzed Cowbird,25,4,30,Cowbird
 Shiny Cowbird,26,4,30,Cowbird
-Brown Creeper,26,4,29,Creeper
+Brown Creeper,25,5,29,Creeper
 American Crow,25,5,30,Crow
-Fish Crow,25,5,30,Crow
-Black billed Cuckoo,26,4,30,Cuckoo
+Fish Crow,26,4,30,Crow
+Black billed Cuckoo,25,5,30,Cuckoo
 Mangrove Cuckoo,25,5,23,Cuckoo
-Yellow billed Cuckoo,25,5,29,Cuckoo
+Yellow billed Cuckoo,26,4,29,Cuckoo
 Gray crowned Rosy Finch,25,5,29,Finch
 Purple Finch,25,5,30,Finch
-Northern Flicker,26,4,30,Flicker
-Acadian Flycatcher,25,5,29,Flycatcher
+Northern Flicker,25,5,30,Flicker
+Acadian Flycatcher,26,4,29,Flycatcher
 Great Crested Flycatcher,25,5,30,Flycatcher
-Least Flycatcher,26,4,29,Flycatcher
+Least Flycatcher,25,5,29,Flycatcher
 Olive sided Flycatcher,25,5,30,Flycatcher
 Scissor tailed Flycatcher,25,5,30,Flycatcher
 Vermilion Flycatcher,26,4,30,Flycatcher
-Yellow bellied Flycatcher,25,5,29,Flycatcher
-Frigatebird,25,5,30,Frigatebird
-Northern Fulmar,26,4,30,Fulmar
+Yellow bellied Flycatcher,26,4,29,Flycatcher
+Frigatebird,26,4,30,Frigatebird
+Northern Fulmar,25,5,30,Fulmar
 Gadwall,25,5,30,Gadwall
-American Goldfinch,25,5,30,Goldfinch
+American Goldfinch,26,4,30,Goldfinch
 European Goldfinch,26,4,30,Goldfinch
-Boat tailed Grackle,25,5,30,Grackle
-Eared Grebe,26,4,30,Grebe
+Boat tailed Grackle,26,4,30,Grackle
+Eared Grebe,25,5,30,Grebe
 Horned Grebe,26,4,30,Grebe
-Pied billed Grebe,25,5,30,Grebe
+Pied billed Grebe,26,4,30,Grebe
 Western Grebe,26,4,30,Grebe
 Blue Grosbeak,26,4,30,Grosbeak
-Evening Grosbeak,26,4,30,Grosbeak
+Evening Grosbeak,25,5,30,Grosbeak
 Pine Grosbeak,26,4,30,Grosbeak
-Rose breasted Grosbeak,26,4,30,Grosbeak
-Pigeon Guillemot,25,5,28,Guillemot
+Rose breasted Grosbeak,25,5,30,Grosbeak
+Pigeon Guillemot,25,4,28,Guillemot
 California Gull,26,4,30,Gull
-Glaucous winged Gull,25,5,29,Gull
+Glaucous winged Gull,26,4,29,Gull
 Heermann Gull,25,5,30,Gull
 Herring Gull,26,4,30,Gull
 Ivory Gull,25,5,30,Gull
-Ring billed Gull,26,4,30,Gull
-Slaty backed Gull,26,4,20,Gull
+Ring billed Gull,25,5,30,Gull
+Slaty backed Gull,25,5,20,Gull
 Western Gull,25,5,30,Gull
-Anna Hummingbird,25,5,30,Hummingbird
+Anna Hummingbird,26,4,30,Hummingbird
 Ruby throated Hummingbird,26,4,30,Hummingbird
-Rufous Hummingbird,26,4,30,Hummingbird
-Green Violetear,25,5,30,Violetear
-Long tailed Jaeger,25,5,30,Jaeger
-Pomarine Jaeger,26,4,30,Jaeger
-Blue Jay,26,4,30,Jay
-Florida Jay,25,5,30,Jay
-Green Jay,26,4,27,Jay
-Dark eyed Junco,26,4,30,Junco
+Rufous Hummingbird,25,5,30,Hummingbird
+Green Violetear,26,4,30,Violetear
+Long tailed Jaeger,26,4,30,Jaeger
+Pomarine Jaeger,25,5,30,Jaeger
+Blue Jay,25,5,30,Jay
+Florida Jay,26,4,30,Jay
+Green Jay,25,5,27,Jay
+Dark eyed Junco,25,5,30,Junco
 Tropical Kingbird,25,5,30,Kingbird
 Gray Kingbird,25,5,29,Kingbird
-Belted Kingfisher,26,4,30,Kingfisher
-Green Kingfisher,26,4,30,Kingfisher
-Pied Kingfisher,26,4,30,Kingfisher
+Belted Kingfisher,25,5,30,Kingfisher
+Green Kingfisher,25,5,30,Kingfisher
+Pied Kingfisher,25,5,30,Kingfisher
 Ringed Kingfisher,25,5,30,Kingfisher
-White breasted Kingfisher,26,4,30,Kingfisher
+White breasted Kingfisher,25,5,30,Kingfisher
 Red legged Kittiwake,26,4,23,Kittiwake
 Horned Lark,25,5,30,Lark
-Pacific Loon,25,5,30,Loon
+Pacific Loon,26,4,30,Loon
 Mallard,25,5,30,Mallard
 Western Meadowlark,25,5,30,Meadowlark
-Hooded Merganser,25,5,30,Merganser
+Hooded Merganser,26,4,30,Merganser
 Red breasted Merganser,26,4,30,Merganser
 Mockingbird,25,5,30,Mockingbird
-Nighthawk,26,4,30,Nighthawk
+Nighthawk,25,5,30,Nighthawk
 Clark Nutcracker,25,5,30,Nutcracker
 White breasted Nuthatch,26,4,30,Nuthatch
 Baltimore Oriole,26,4,30,Oriole
-Hooded Oriole,26,4,30,Oriole
+Hooded Oriole,25,4,30,Oriole
 Orchard Oriole,25,5,29,Oriole
 Scott Oriole,26,4,30,Oriole
-Ovenbird,25,5,30,Ovenbird
+Ovenbird,26,4,30,Ovenbird
 Brown Pelican,26,4,30,Pelican
-White Pelican,26,4,20,Pelican
-Western Wood Pewee,25,5,30,Pewee
+White Pelican,25,5,20,Pelican
+Western Wood Pewee,26,4,30,Pewee
 Sayornis,26,4,30,Sayornis
-American Pipit,25,5,30,Pipit
+American Pipit,26,4,30,Pipit
 Whip poor Will,26,4,19,Will
 Horned Puffin,26,4,30,Puffin
 Common Raven,25,4,30,Raven
-White necked Raven,25,5,30,Raven
-American Redstart,26,4,30,Redstart
-Geococcyx,26,4,30,Geococcyx
-Loggerhead Shrike,26,4,30,Shrike
-Great Grey Shrike,26,4,30,Shrike
-Baird Sparrow,25,5,20,Sparrow
-Black throated Sparrow,25,5,30,Sparrow
-Brewer Sparrow,26,4,29,Sparrow
-Chipping Sparrow,25,5,30,Sparrow
+White necked Raven,26,4,30,Raven
+American Redstart,25,5,30,Redstart
+Geococcyx,25,5,30,Geococcyx
+Loggerhead Shrike,25,5,30,Shrike
+Great Grey Shrike,25,5,30,Shrike
+Baird Sparrow,26,4,20,Sparrow
+Black throated Sparrow,26,4,30,Sparrow
+Brewer Sparrow,25,5,29,Sparrow
+Chipping Sparrow,26,4,30,Sparrow
 Clay colored Sparrow,25,5,29,Sparrow
 House Sparrow,25,5,30,Sparrow
-Field Sparrow,25,5,29,Sparrow
-Fox Sparrow,25,5,30,Sparrow
-Grasshopper Sparrow,26,4,30,Sparrow
+Field Sparrow,26,4,29,Sparrow
+Fox Sparrow,26,4,30,Sparrow
+Grasshopper Sparrow,25,5,30,Sparrow
 Harris Sparrow,26,4,30,Sparrow
 Henslow Sparrow,25,5,30,Sparrow
 Le Conte Sparrow,25,5,29,Sparrow
 Lincoln Sparrow,26,4,29,Sparrow
 Nelson Sharp tailed Sparrow,25,4,30,Sparrow
-Savannah Sparrow,25,5,30,Sparrow
+Savannah Sparrow,26,4,30,Sparrow
 Seaside Sparrow,25,5,30,Sparrow
-Song Sparrow,25,5,30,Sparrow
+Song Sparrow,26,4,30,Sparrow
 Tree Sparrow,26,4,30,Sparrow
 Vesper Sparrow,26,4,30,Sparrow
-White crowned Sparrow,25,5,30,Sparrow
+White crowned Sparrow,26,4,30,Sparrow
 White throated Sparrow,25,5,30,Sparrow
 Cape Glossy Starling,25,5,30,Starling
 Bank Swallow,25,4,30,Swallow
 Barn Swallow,26,4,30,Swallow
 Cliff Swallow,26,4,30,Swallow
 Tree Swallow,25,5,30,Swallow
-Scarlet Tanager,25,5,30,Tanager
-Summer Tanager,25,5,30,Tanager
+Scarlet Tanager,26,4,30,Tanager
+Summer Tanager,26,4,30,Tanager
 Artic Tern,25,4,29,Tern
-Black Tern,26,4,30,Tern
-Caspian Tern,25,5,30,Tern
-Common Tern,26,4,30,Tern
+Black Tern,25,5,30,Tern
+Caspian Tern,26,4,30,Tern
+Common Tern,25,5,30,Tern
 Elegant Tern,25,5,30,Tern
-Forsters Tern,26,4,30,Tern
+Forsters Tern,25,5,30,Tern
 Least Tern,26,4,30,Tern
-Green tailed Towhee,25,5,30,Towhee
+Green tailed Towhee,26,4,30,Towhee
 Brown Thrasher,26,4,29,Thrasher
-Sage Thrasher,25,5,30,Thrasher
-Black capped Vireo,26,4,21,Vireo
-Blue headed Vireo,25,5,30,Vireo
+Sage Thrasher,26,4,30,Thrasher
+Black capped Vireo,25,5,21,Vireo
+Blue headed Vireo,26,4,30,Vireo
 Philadelphia Vireo,26,4,29,Vireo
 Red eyed Vireo,26,4,30,Vireo
 Warbling Vireo,25,5,30,Vireo
-White eyed Vireo,25,5,30,Vireo
-Yellow throated Vireo,25,5,29,Vireo
+White eyed Vireo,26,4,30,Vireo
+Yellow throated Vireo,26,4,29,Vireo
 Bay breasted Warbler,26,4,30,Warbler
-Black and white Warbler,26,4,30,Warbler
-Black throated Blue Warbler,26,4,29,Warbler
+Black and white Warbler,25,5,30,Warbler
+Black throated Blue Warbler,25,5,29,Warbler
 Blue winged Warbler,25,5,30,Warbler
-Canada Warbler,25,5,30,Warbler
-Cape May Warbler,25,5,30,Warbler
-Cerulean Warbler,26,4,30,Warbler
-Chestnut sided Warbler,26,4,30,Warbler
-Golden winged Warbler,25,5,29,Warbler
-Hooded Warbler,26,4,30,Warbler
-Kentucky Warbler,26,4,29,Warbler
+Canada Warbler,26,4,30,Warbler
+Cape May Warbler,26,4,30,Warbler
+Cerulean Warbler,25,5,30,Warbler
+Chestnut sided Warbler,25,5,30,Warbler
+Golden winged Warbler,25,4,29,Warbler
+Hooded Warbler,25,5,30,Warbler
+Kentucky Warbler,25,5,29,Warbler
 Magnolia Warbler,26,4,29,Warbler
 Mourning Warbler,25,5,30,Warbler
-Myrtle Warbler,26,4,30,Warbler
-Nashville Warbler,25,5,30,Warbler
-Orange crowned Warbler,25,5,30,Warbler
+Myrtle Warbler,25,5,30,Warbler
+Nashville Warbler,26,4,30,Warbler
+Orange crowned Warbler,26,4,30,Warbler
 Palm Warbler,26,4,30,Warbler
 Pine Warbler,25,5,30,Warbler
-Prairie Warbler,26,4,30,Warbler
-Prothonotary Warbler,26,4,30,Warbler
-Swainson Warbler,25,5,26,Warbler
-Tennessee Warbler,26,4,29,Warbler
-Wilson Warbler,26,4,30,Warbler
+Prairie Warbler,25,5,30,Warbler
+Prothonotary Warbler,25,4,30,Warbler
+Swainson Warbler,25,4,26,Warbler
+Tennessee Warbler,25,5,29,Warbler
+Wilson Warbler,25,5,30,Warbler
 Worm eating Warbler,25,5,29,Warbler
-Yellow Warbler,26,4,30,Warbler
-Northern Waterthrush,25,5,30,Waterthrush
+Yellow Warbler,25,5,30,Warbler
+Northern Waterthrush,26,4,30,Waterthrush
 Louisiana Waterthrush,25,5,30,Waterthrush
 Bohemian Waxwing,26,4,30,Waxwing
 Cedar Waxwing,25,5,30,Waxwing
@@ -189,13 +189,13 @@ American Three toed Woodpecker,25,5,20,Woodpecker
 Pileated Woodpecker,25,5,30,Woodpecker
 Red bellied Woodpecker,26,4,30,Woodpecker
 Red cockaded Woodpecker,25,4,29,Woodpecker
-Red headed Woodpecker,26,4,30,Woodpecker
+Red headed Woodpecker,25,5,30,Woodpecker
 Downy Woodpecker,25,5,30,Woodpecker
 Bewick Wren,26,4,30,Wren
 Cactus Wren,26,4,30,Wren
 Carolina Wren,25,5,30,Wren
 House Wren,25,4,30,Wren
-Marsh Wren,26,4,30,Wren
+Marsh Wren,25,4,30,Wren
 Rock Wren,26,4,30,Wren
 Winter Wren,25,5,30,Wren
-Common Yellowthroat,25,5,30,Yellowthroat
+Common Yellowthroat,26,4,30,Yellowthroat

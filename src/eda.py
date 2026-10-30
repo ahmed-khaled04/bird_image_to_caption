@@ -111,9 +111,10 @@ def print_caption_report(raw, lines, cleaned, per_image, words_before, words_aft
     print("lines per description:", per_image["lines"].value_counts().to_dict())
     print(f"images with an empty line: {(per_image['empty'] > 0).sum()}, "
           f"empty lines that are not the last line: {(per_image['empty'] > 1).sum()}")
+    funnel = caption_stats.cleaning_funnel(lines["train"], cleaned["train"])
     print(f"images with duplicate captions: {(per_image['duplicates'] > 0).sum()} "
           f"({per_image['duplicates'].sum()} duplicate lines as written; cleaning drops "
-          f"{(per_image['lines'] - per_image['empty'] - per_image['kept']).sum()}, because once punctuation "
+          f"{funnel.iloc[2] - funnel['unique (kept)']}, because once punctuation "
           f"is removed more lines become identical)")
 
     print("\n=== formatting issues (raw train lines)")

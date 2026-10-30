@@ -9,7 +9,7 @@ from collections import Counter
 import pandas as pd
 from spellchecker import SpellChecker
 
-from src.data.caption_cleaning import TYPO_FIXES, clean_caption
+from src.data.caption_cleaning import MIN_WORDS, TYPO_FIXES, clean_caption
 
 
 def split_lines(descriptions: list) -> pd.Series:
@@ -33,11 +33,12 @@ def per_image_counts(descriptions: list, cleaned: list) -> pd.DataFrame:
 
 
 def cleaning_funnel(lines: pd.Series, cleaned: list) -> pd.Series:
-    """Caption count after each cleaning stage: split, drop empty, drop duplicates."""
-    non_empty = sum(1 for line in lines if clean_caption(line))
+    """Caption count after each cleaning stage: split, drop empty and too short, drop duplicates."""
+    word_counts_ = [len(clean_caption(line).split()) for line in lines]
     return pd.Series({
         "lines after split": len(lines),
-        "non-empty": non_empty,
+        "non-empty": sum(1 for n in word_counts_ if n > 0),
+        f">= {MIN_WORDS} words": sum(1 for n in word_counts_ if n >= MIN_WORDS),
         "unique (kept)": sum(len(captions) for captions in cleaned),
     })
 
