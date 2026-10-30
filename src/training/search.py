@@ -41,7 +41,7 @@ def random_trials(space: dict, n_trials: int, seed: int) -> list:
     return [{name: sample(spec, rng) for name, spec in space.items()} for _ in range(n_trials)]
 
 
-def _same_params(row: dict, params: dict) -> bool:
+def same_params(row: dict, params: dict) -> bool:
     # values come back from the CSV, so floats are compared with a tolerance
     return all(row[name] == value or (isinstance(value, float) and math.isclose(row[name], value))
                for name, value in params.items())
@@ -50,7 +50,7 @@ def _same_params(row: dict, params: dict) -> bool:
 def run_search(name: str, trials: list, objective, results_path: Path) -> pd.DataFrame:
     """Run `objective` on every trial in order and return one row per trial: its params, scores and seconds."""
     rows = pd.read_csv(results_path).to_dict("records") if results_path.exists() else []
-    if len(rows) > len(trials) or not all(_same_params(row, params) for row, params in zip(rows, trials)):
+    if len(rows) > len(trials) or not all(same_params(row, params) for row, params in zip(rows, trials)):
         raise ValueError(f"{results_path} holds other trials than this search; delete it to start over")
     if rows:
         print(f"{name}: {len(rows)} of {len(trials)} trials already done, resuming")

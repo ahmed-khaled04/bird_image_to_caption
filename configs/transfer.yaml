@@ -1,0 +1,24 @@
+# Transfer learning vs the from-scratch baseline (Task 1.2, point 3): python -m src.cli transfer
+# Every run trains on train, keeps the epoch with the best validation accuracy and is scored once on test.
+# A run takes the defaults and overrides some of them.
+defaults:
+  epochs: 10
+  batch_size: 32
+  image_size: 224
+  optimizer: adamw
+  weight_decay: 1.0e-4
+  dropout: 0.3
+  seed: 42             # the same for every run, so runs differ only in their settings
+  num_workers: 2       # Colab and Kaggle give 2 CPU cores
+
+# Frozen: only the new 200-class layer learns, starting from random weights, so it can take big steps (1e-3).
+# Fine-tune: every pretrained weight moves too, so the steps are 10x smaller (1e-4), or the first updates
+# wipe out what ImageNet taught the network.
+runs:
+  - {name: scratch, encoder: scratch, freeze: false, lr: 1.0e-3, epochs: 30}  # no head start, needs more epochs
+  - {name: resnet18_frozen, encoder: resnet18, freeze: true, lr: 1.0e-3}
+  - {name: resnet18_finetune, encoder: resnet18, freeze: false, lr: 1.0e-4}
+  - {name: resnet50_frozen, encoder: resnet50, freeze: true, lr: 1.0e-3}
+  - {name: resnet50_finetune, encoder: resnet50, freeze: false, lr: 1.0e-4}
+  - {name: efficientnet_b0_frozen, encoder: efficientnet_b0, freeze: true, lr: 1.0e-3}
+  - {name: efficientnet_b0_finetune, encoder: efficientnet_b0, freeze: false, lr: 1.0e-4}
