@@ -4,9 +4,16 @@
 encoder: resnet18        # tune on the small model: much faster per trial than resnet50
 freeze: false
 epochs: 5                # per trial: enough to rank settings, not to converge
+final_epochs: 10         # the winner is retrained (tune --retrain-best) as long as the transfer runs
 seed: 42                 # the same for every trial, so trials differ only in their hyperparameters
 metric: val_accuracy     # higher is better
 random_trials: null      # null = as many as the grid has
+
+# everything not tuned stays as in configs/transfer.yaml, so the tuned model is compared fairly with the untuned one
+batch_size: 32
+image_size: 224
+optimizer: adamw
+num_workers: 2
 
 # The learning rate range depends on the encoder: fine-tuning pretrained weights needs about 10x smaller
 # steps than training from scratch, or the first updates wipe out what ImageNet taught the network.

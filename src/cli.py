@@ -8,7 +8,46 @@ from src.augmentation import run_augmentation_demo
 from src.cleaning import run_cleaning
 from src.data.loader import load_cub, summarize
 from src.eda import run_caption_eda, run_class_eda, run_image_eda
-from src.tuning import run_tuning, synthetic_objective
+from src.experiment import load_processed, synthetic_run, train_run, training_code
+from src.transfer import run_transfer
+from src.tuning import make_objective, retrain_best, run_tuning, synthetic_objective
+
+
+def add_training_arguments(command) -> None:
+    command.add_argument("--data-dir", default="data/processed", help="Cleaned splits saved by the clean command")
+    command.add_argument("--checkpoint-dir", help="Where to save the trained weights (default outputs/checkpoints)")
+    command.add_argument("--limit", type=int, help="Use only the first N images of each split, for a quick check")
+    command.add_argument("--dry-run", action="store_true",
+                         help="Made-up scores instead of training, to test the pipeline in seconds")
+    command.add_argument("--fig-dir", help="Where to save figures (default outputs/figures)")
+    command.add_argument("--table-dir", help="Where to save results (default outputs/tables)")
+
+
+def output_dirs(args) -> tuple:
+    """(tables, figures, checkpoints). Test runs (--dry-run, --limit) default to outputs/dry_run, so their results
+    are never mistaken for real ones and skipped as already done."""
+    test_run = args.dry_run or args.limit
+    defaults = ["outputs/dry_run"] * 3 if test_run else ["outputs/tables", "outputs/figures", "outputs/checkpoints"]
+    return tuple(Path(given or default) for given, default in
+                 zip([args.table_dir, args.fig_dir, args.checkpoint_dir], defaults))
+
+
+def training_runner(args, parser):
+    """train_run on the cleaned data (loaded at the first run, so a report of finished runs needs no data),
+    or synthetic_run with --dry-run."""
+    if args.dry_run:
+        return synthetic_run
+    try:
+        training_code()
+    except ImportError as error:
+        parser.error(str(error))
+    data = {}
+
+    def train_fn(run, **kwargs):
+        if not data:
+            data["splits"] = load_processed(Path(args.data_dir), args.limit)
+        return train_run(run, data["splits"], **kwargs)
+    return train_fn
 
 
 def main() -> None:
@@ -44,13 +83,19 @@ def main() -> None:
     augment.add_argument("--seed", type=int, default=0, help="Seed for the image choice and the random augmentation")
     augment.add_argument("--fig-dir", default="outputs/figures", help="Where to save the figure")
 
+    transfer = sub.add_parser("transfer", help="Train the scratch baseline and the pretrained encoders, frozen and "
+                                                "fine-tuned, then compare them on test")
+    transfer.add_argument("--config", default="configs/transfer.yaml", help="Shared settings and the list of runs")
+    transfer.add_argument("--runs", nargs="+", help="Only these runs (names from the config), e.g. to split them "
+                                                    "between Colab and Kaggle; finished runs are always skipped")
+    add_training_arguments(transfer)
+
     tune = sub.add_parser("tune", help="Grid search and random search over the classifier hyperparameters, then compare them")
     tune.add_argument("--config", default="configs/tuning.yaml", help="Encoder, epochs per trial and search spaces")
     tune.add_argument("--encoder", help="Override the encoder in the config")
-    tune.add_argument("--dry-run", action="store_true",
-                      help="Score trials with a fast synthetic function instead of training, to test the pipeline")
-    tune.add_argument("--fig-dir", help="Where to save figures (default outputs/figures, or outputs/dry_run with --dry-run)")
-    tune.add_argument("--table-dir", help="Where to save CSV tables (default outputs/tables, or outputs/dry_run with --dry-run)")
+    tune.add_argument("--retrain-best", action="store_true",
+                      help="After tuning: train the best setting fully, score it on test and compare it with the untuned run")
+    add_training_arguments(tune)
 
     args = parser.parse_args()
     if args.command == "eda":
@@ -69,14 +114,21 @@ def main() -> None:
     elif args.command == "augment":
         run_augmentation_demo(load_cub(args.cache_dir), Path(args.fig_dir), args.index, args.n_images,
                               args.n_augmented, args.image_size, args.seed)
+    elif args.command == "transfer":
+        config = yaml.safe_load(Path(args.config).read_text())
+        table_dir, fig_dir, checkpoint_dir = output_dirs(args)
+        run_transfer(config, training_runner(args, parser), table_dir, fig_dir, checkpoint_dir, args.runs)
     elif args.command == "tune":
         config = yaml.safe_load(Path(args.config).read_text())
         if args.encoder:
             config["encoder"] = args.encoder
-        if not args.dry_run:
-            parser.error("training is not connected to the search yet; use --dry-run for now")
-        out = "outputs/dry_run"
-        run_tuning(config, synthetic_objective, Path(args.table_dir or out), Path(args.fig_dir or out))
+        table_dir, fig_dir, checkpoint_dir = output_dirs(args)
+        train_fn = training_runner(args, parser)
+        if args.retrain_best:
+            retrain_best(config, train_fn, table_dir, checkpoint_dir)
+        else:
+            objective = synthetic_objective if args.dry_run else make_objective(config, train_fn)
+            run_tuning(config, objective, table_dir, fig_dir)
 
 
 if __name__ == "__main__":
