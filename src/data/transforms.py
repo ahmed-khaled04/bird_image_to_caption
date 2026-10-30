@@ -38,3 +38,14 @@ def to_model_input() -> T.Compose:
 def train_transform(image_size: int = 224) -> T.Compose:
     """Augmentation followed by tensor conversion: what the train loader applies to every image."""
     return T.Compose([train_augmentation(image_size), to_model_input()])
+
+
+def eval_transform(image_size: int = 224) -> T.Compose:
+    """Validation and test: no randomness, so scores are comparable between runs and models.
+
+    Resize the shorter side to 256 (for 224), then take the central crop. The 256-to-224 ratio is the
+    standard ImageNet evaluation setup, which keeps the bird in the frame and matches what the pretrained
+    models saw. Same normalization as train.
+    """
+    resize = round(image_size * 256 / 224)
+    return T.Compose([T.Lambda(to_rgb), T.Resize(resize), T.CenterCrop(image_size), to_model_input()])
