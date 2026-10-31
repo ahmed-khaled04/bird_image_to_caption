@@ -102,7 +102,14 @@ def save_checkpoint(model, run, epoch, validation_metric, class_labels, state_di
             torch.save(checkpoint, file)
             file.flush()
             os.fsync(file.fileno())
-        os.link(temporary, destination)
+        try:
+            os.link(temporary, destination)
+        except PermissionError:
+            # filesystems without hard links (Google Drive mounted in Colab): the name carries a fresh uuid,
+            # so renaming within the same folder cannot replace an earlier checkpoint
+            if destination.exists():
+                raise FileExistsError(destination)
+            os.rename(temporary, destination)
     finally:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
