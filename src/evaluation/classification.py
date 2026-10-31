@@ -1,4 +1,6 @@
 import torch
+import pandas as pd
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 
 
 @torch.inference_mode()
@@ -43,3 +45,29 @@ def evaluate(model, loader, loss_fn, device):
         "labels": labels,
         "predictions": predictions,
     }
+
+
+def classification_tables(result, class_names):
+    """Overall scores, one row per species, and a true-by-predicted confusion matrix."""
+    labels, predictions = result["labels"], result["predictions"]
+    class_ids = list(range(len(class_names)))
+    precision, recall, f1, support = precision_recall_fscore_support(
+        labels, predictions, labels=class_ids, zero_division=0
+    )
+    per_class = pd.DataFrame({
+        "species": class_names, "support": support,
+        "precision": precision, "recall": recall, "f1": f1,
+    })
+    confusion = pd.DataFrame(
+        confusion_matrix(labels, predictions, labels=class_ids),
+        index=pd.Index(class_names, name="true_species"),
+        columns=pd.Index(class_names, name="predicted_species"),
+    )
+    summary = {
+        "images": len(labels), "loss": result["loss"],
+        "accuracy": result["accuracy"], "top5_accuracy": result["top5_accuracy"],
+        "precision_macro": float(precision.mean()),
+        "recall_macro": float(recall.mean()),
+        "f1_macro": float(f1.mean()),
+    }
+    return summary, per_class, confusion
