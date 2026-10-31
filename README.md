@@ -21,3 +21,7 @@ See `notebooks/grad_cam.ipynb` for a walkthrough and an analysis template.
 Write conclusions from real trained-model figures; random-model checks are only software tests.
 
 Verify Grad-CAM with `python -m unittest discover -s tests -v`.
+
+The CLI also creates `outputs/grad_cam/comparison.html`, a portable gallery of both models.
+For checkpoint troubleshooting, calculation details, and interpretation limits, see
+[the Grad-CAM guide](docs/grad_cam.md).
