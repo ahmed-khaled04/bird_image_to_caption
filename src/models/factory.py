@@ -24,4 +24,12 @@ def build_encoder(name: str, **kwargs) -> nn.Module:
 
 def build_classifier(encoder: str = "scratch", num_classes: int = 200, dropout: float = 0.3,
                      **encoder_kwargs) -> BirdClassifier:
-    return BirdClassifier(encoder=build_encoder(encoder, **encoder_kwargs), num_classes=num_classes, dropout=dropout)
+    model = BirdClassifier(encoder=build_encoder(encoder, **encoder_kwargs), num_classes=num_classes, dropout=dropout)
+    # Reconstruction metadata only: no changes to parameters or the forward pass.
+    model.checkpoint_config = {
+        "architecture": "BirdClassifier", "encoder": encoder, "num_classes": num_classes,
+        "dropout": dropout, "freeze": bool(getattr(model.encoder, "frozen", False)),
+        "encoder_kwargs": {key: value for key, value in encoder_kwargs.items()
+                           if key not in {"weights", "freeze"}},
+    }
+    return model
