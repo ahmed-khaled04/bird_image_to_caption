@@ -98,6 +98,14 @@ def main() -> None:
                       help="After tuning: train the best setting fully and compare validation scores with the untuned run")
     add_training_arguments(tune)
 
+    gradcam = sub.add_parser("gradcam", help="Explain trained classifiers with Grad-CAM")
+    gradcam.add_argument("--checkpoints", nargs="+", required=True)
+    gradcam.add_argument("--data-dir", default="data/processed")
+    gradcam.add_argument("--split", choices=["test", "validation"], default="test")
+    gradcam.add_argument("--out-dir", default="outputs/grad_cam")
+    gradcam.add_argument("--examples", type=int, default=3, help="Examples per correct/wrong category")
+    gradcam.add_argument("--max-images", type=int, help="Optional maximum number of images to scan")
+    gradcam.add_argument("--device", default="cpu", choices=["cpu", "cuda", "mps"])
     evaluation = sub.add_parser("evaluate", help="Score saved checkpoints on validation and one selected run on test")
     evaluation.add_argument("--data-dir", default="data/processed")
     evaluation.add_argument("--runs-dir", default="outputs/tables/transfer_runs")
@@ -109,7 +117,10 @@ def main() -> None:
     evaluation.add_argument("--num-workers", type=int, default=0)
 
     args = parser.parse_args()
-    if args.command == "eda":
+    if args.command == "gradcam":
+        from src.grad_cam import run_reports
+        run_reports(args)
+    elif args.command == "eda":
         splits = load_cub(args.cache_dir)
         if args.part == "summary":
             summarize(splits)
