@@ -58,6 +58,7 @@ class TensorBoardRun:
                 self.writer.add_text("run/class_labels", json.dumps(class_labels))
             self._save_record()
             self.writer.flush()
+            print("TensorBoard:", self.log_dir)
         except BaseException:
             self.writer.close()
             raise
@@ -113,3 +114,51 @@ def log_test_metrics(log_dir, metrics, epoch):
     with _summary_writer()(log_dir=str(log_dir)) as writer:
         for key, value in metrics.items():
             writer.add_scalar(f"test/{key.removeprefix('test_')}", value, epoch)
+
+
+def import_saved_runs(runs_dirs, log_root=None):
+    """Export existing real training histories without training or creating checkpoints.
+
+    Content-based names make repeated imports of the same results idempotent. The
+    source JSON and its recorded checkpoint references are preserved verbatim.
+    """
+    from hashlib import sha256
+
+    root = (Path(log_root) if log_root is not None else LOGS_DIR) / "imported"
+    paths = sorted({path.resolve() for directory in runs_dirs for path in Path(directory).glob("*.json")})
+    if not paths:
+        raise ValueError("No saved run JSON files found in the supplied directories")
+    imported = []
+    for path in paths:
+        content = path.read_bytes()
+        saved = json.loads(content)
+        if saved.get("device") == "synthetic":
+            print("Skipping synthetic result:", path)
+            continue
+        if not saved.get("history") or "run" not in saved:
+            raise ValueError(f"{path} must contain a run configuration and non-empty epoch history")
+        run = saved["run"]
+        name = f"{_slug(run['encoder'])}_{_slug(run['name'])}_{sha256(content).hexdigest()}"
+        destination = root.resolve() / name
+        if destination.exists():
+            record_file = destination / "run.json"
+            if record_file.is_file() and json.loads(record_file.read_text()).get("status") == "completed":
+                print("Already imported:", path)
+                imported.append(destination)
+                continue
+            raise FileExistsError(f"Incomplete import at {destination}; use a different --log-dir to retry")
+        checkpoint = saved.get("checkpoint_path")
+        if not checkpoint:
+            legacy = PROJECT_ROOT / "outputs" / "checkpoints" / f"{run['name']}.pt"
+            checkpoint = str(legacy) if legacy.is_file() else None
+        with TensorBoardRun(run, log_root=root, source=f"historical:{path}", run_name=name) as tracking:
+            for row in saved["history"]:
+                tracking.log_epoch(row)
+            tracking.complete(saved["best_epoch"], saved["best_val_accuracy"], checkpoint,
+                              seconds=saved["minutes"] * 60 if "minutes" in saved else None)
+        metrics = {key: value for key, value in saved.items()
+                   if key.startswith("test_") and isinstance(value, (int, float))}
+        if metrics:
+            log_test_metrics(tracking.log_dir, metrics, saved["best_epoch"])
+        imported.append(tracking.log_dir)
+    return imported

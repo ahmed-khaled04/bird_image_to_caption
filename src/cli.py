@@ -118,6 +118,10 @@ def main() -> None:
     evaluation.add_argument("--test-run", help="Run the final test evaluation for this one validation-selected model")
     evaluation.add_argument("--num-workers", type=int, default=0)
 
+    tb_import = sub.add_parser("tensorboard-import", help="Import saved training JSON histories into TensorBoard")
+    tb_import.add_argument("--runs-dir", nargs="+", default=["outputs/tables/transfer_runs"])
+    tb_import.add_argument("--log-dir", help="TensorBoard log root (default: root outputs/tensorboard)")
+
     args = parser.parse_args()
     if args.command == "gradcam":
         from src.grad_cam import run_reports
@@ -160,6 +164,9 @@ def main() -> None:
     elif args.command == "evaluate":
         run_evaluation(Path(args.data_dir), Path(args.runs_dir), Path(args.checkpoint_dir),
                        Path(args.table_dir), Path(args.fig_dir), args.runs, args.test_run, args.num_workers)
+    elif args.command == "tensorboard-import":
+        from src.training.tracking import import_saved_runs
+        import_saved_runs(args.runs_dir, args.log_dir)
 
 
 if __name__ == "__main__":
