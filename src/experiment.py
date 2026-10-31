@@ -18,6 +18,7 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 from torch import nn
 
 from src.data.loaders import build_dataloaders
+from src.data.loader import class_names
 from src.models.factory import build_classifier
 
 OPTIMIZERS = {
@@ -30,8 +31,8 @@ OPTIMIZERS = {
 def training_code():
     """The epoch loop and evaluation from points 1-2:
 
-    fit(model, loaders, loss_fn, optimizer, device, epochs) -> {"history": [one dict per epoch with epoch,
-        train_loss, train_accuracy, val_loss, val_accuracy], "best_val_accuracy", "best_epoch", "best_state"}
+    fit(model, loaders, loss_fn, optimizer, device, epochs, **metadata) -> {"history": [one dict per epoch with epoch,
+        train_loss, train_accuracy, val_loss, val_accuracy], "best_val_accuracy", "best_epoch", "best_state", "checkpoint_path"}
     evaluate(model, loader, loss_fn, device) -> {"loss", "accuracy", "top5_accuracy", "labels", "predictions"}
     """
     try:
@@ -116,7 +117,8 @@ def train_run(run: dict, data: DatasetDict, test: bool = False, checkpoint_dir: 
           f"{run['epochs']} epochs on {device}")
 
     start = time.perf_counter()
-    trained = fit(model, loaders, loss_fn, optimizer, device, run["epochs"])
+    trained = fit(model, loaders, loss_fn, optimizer, device, run["epochs"], run_config=run,
+                  class_labels=class_names(data["train"]), checkpoint_dir=checkpoint_dir)
     seconds = time.perf_counter() - start
     model.load_state_dict(trained["best_state"])  # back to the best epoch, not the last one
 
@@ -124,15 +126,10 @@ def train_run(run: dict, data: DatasetDict, test: bool = False, checkpoint_dir: 
         "run": run, "mode": mode_name(run), "trainable_params": trainable, "total_params": total,
         "best_val_accuracy": float(trained["best_val_accuracy"]), "best_epoch": int(trained["best_epoch"]),
         "minutes": seconds / 60, "device": str(device), "history": trained["history"],
+        "checkpoint_path": trained["checkpoint_path"],
     }
     if test:
         result.update(test_metrics(evaluate(model, loaders["test"], loss_fn, device)))
-    if checkpoint_dir:
-        checkpoint_dir.mkdir(parents=True, exist_ok=True)
-        path = checkpoint_dir / f"{run['name']}.pt"
-        torch.save({"run": run, "state_dict": model.state_dict(),
-                    "best_val_accuracy": result["best_val_accuracy"]}, path)
-        print("saved", path)
     return result
 
 

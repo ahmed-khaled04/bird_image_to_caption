@@ -25,11 +25,12 @@ def base_run(config: dict) -> dict:
     return {"name": f"{config['encoder']}_tuning_trial", **{key: config[key] for key in RUN_KEYS}}
 
 
-def make_objective(config: dict, train_fn):
-    """Score of one setting: a short training run, judged on validation only (no test, no checkpoint)."""
+def make_objective(config: dict, train_fn, checkpoint_dir: Path = None):
+    """Score on validation only; shared training automatically saves every trial's best weights."""
     def objective(params: dict) -> dict:
-        result = train_fn({**base_run(config), **params}, test=False, checkpoint_dir=None)
-        return {"val_accuracy": result["best_val_accuracy"], "best_epoch": result["best_epoch"]}
+        result = train_fn({**base_run(config), **params}, test=False, checkpoint_dir=checkpoint_dir)
+        return {"val_accuracy": result["best_val_accuracy"], "best_epoch": result["best_epoch"],
+                "checkpoint_path": result["checkpoint_path"]}
     return objective
 
 

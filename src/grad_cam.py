@@ -13,17 +13,7 @@ from datasets import load_from_disk
 from src.data.loader import class_names
 from src.data.transforms import IMAGENET_MEAN, IMAGENET_STD, eval_transform
 from src.evaluation.grad_cam import GradCAM
-from src.models.factory import build_classifier
-
-
-def load_checkpoint(path, device):
-    checkpoint = torch.load(path, map_location="cpu", weights_only=True)
-    run = checkpoint["run"]
-    kwargs = {} if run["encoder"] == "scratch" else {"weights": None, "freeze": run["freeze"]}
-    model = build_classifier(run["encoder"], num_classes=checkpoint["state_dict"]["fc.weight"].shape[0],
-                             dropout=run["dropout"], **kwargs)
-    model.load_state_dict(checkpoint["state_dict"], strict=True)
-    return model.to(device).eval(), run
+from src.training.checkpoints import load_checkpoint
 
 
 def generate_report(checkpoint, split, out_dir, examples=3, max_images=None, device="cpu", split_name="test"):

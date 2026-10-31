@@ -3,6 +3,7 @@ import copy
 import time
 
 from src.evaluation.classification import evaluate
+from src.training.checkpoints import checkpoint_directory, save_checkpoint, training_metadata
 
 
 def train_one_epoch(model, loader, loss_fn, optimizer, device):
@@ -32,7 +33,13 @@ def train_one_epoch(model, loader, loss_fn, optimizer, device):
     return total_loss / seen, correct / seen
 
 
-def fit(model, loaders, loss_fn, optimizer, device, epochs):
+def fit(model, loaders, loss_fn, optimizer, device, epochs, *, run_config=None, class_labels=None,
+        checkpoint_dir=None):
+    """Train unchanged; automatically save the best validation state of every completed run."""
+    if epochs < 1:
+        raise ValueError("epochs must be positive")
+    directory = checkpoint_directory(checkpoint_dir)
+    run, labels = training_metadata(model, loaders, optimizer, epochs, run_config, class_labels)
     history = []
     best_val_accuracy = -1.0
     best_epoch = 0
@@ -68,9 +75,14 @@ def fit(model, loaders, loss_fn, optimizer, device, epochs):
             f"{time.perf_counter() - start:.0f}s"
         )
 
+    if best_state is None:
+        raise ValueError("No valid best validation state was produced")
+    checkpoint_path = save_checkpoint(model, run, best_epoch, best_val_accuracy, labels,
+                                      state_dict=best_state, directory=directory)
     return {
         "history": history,
         "best_val_accuracy": best_val_accuracy,
         "best_epoch": best_epoch,
         "best_state": best_state,
+        "checkpoint_path": str(checkpoint_path),
     }
