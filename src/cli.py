@@ -131,6 +131,12 @@ def main() -> None:
     tb_import.add_argument("--runs-dir", nargs="+", default=["outputs/tables/transfer_runs"])
     tb_import.add_argument("--log-dir", help="TensorBoard log root (default: root outputs/tensorboard)")
 
+    evidence = sub.add_parser("tracking-export", help="Export TensorBoard curves/configs and audit historical checkpoint coverage")
+    evidence.add_argument("--runs-dir", nargs="+", default=["outputs/tables/transfer_runs", "outputs/my_training/tables/transfer_runs"])
+    evidence.add_argument("--log-dir", help="TensorBoard log root")
+    evidence.add_argument("--checkpoint-dir", help="Directory containing recovered/relocated weights")
+    evidence.add_argument("--out-dir", default="outputs/tracking_evidence")
+
     args = parser.parse_args()
     if args.command == "predict":
         from src.predict import run_prediction
@@ -180,7 +186,9 @@ def main() -> None:
     elif args.command == "tensorboard-import":
         from src.training.tracking import import_saved_runs
         import_saved_runs(args.runs_dir, args.log_dir)
-
+    elif args.command == "tracking-export":
+        from src.training.evidence import export_tracking_evidence
+        export_tracking_evidence(args.runs_dir, args.out_dir, args.log_dir, args.checkpoint_dir)
 
 
 if __name__ == "__main__":
