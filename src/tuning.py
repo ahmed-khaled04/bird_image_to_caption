@@ -30,7 +30,7 @@ def make_objective(config: dict, train_fn, checkpoint_dir: Path = None):
     def objective(params: dict) -> dict:
         result = train_fn({**base_run(config), **params}, test=False, checkpoint_dir=checkpoint_dir)
         return {"val_accuracy": result["best_val_accuracy"], "best_epoch": result["best_epoch"],
-                "checkpoint_path": result["checkpoint_path"]}
+                "checkpoint_path": result["checkpoint_path"], "tensorboard_dir": result["tensorboard_dir"]}
     return objective
 
 

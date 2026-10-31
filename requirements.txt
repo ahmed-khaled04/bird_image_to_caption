@@ -13,3 +13,5 @@ pyyaml
 tqdm
 pyspellchecker
 torchinfo
+
+tensorboard>=2.16,<3

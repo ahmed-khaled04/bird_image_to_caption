@@ -19,6 +19,7 @@ def add_training_arguments(command) -> None:
     command.add_argument("--data-dir", default="data/processed", help="Cleaned splits saved by the clean command")
     command.add_argument("--checkpoint-dir", help="Optional subfolder inside root models/ (default: root models/)")
     command.add_argument("--limit", type=int, help="Use only the first N images of each split, for a quick check")
+    command.add_argument("--log-dir", help="TensorBoard log root (default: root outputs/tensorboard)")
     command.add_argument("--num-workers", type=int, help="Data loader workers (0 avoids shared-memory restrictions)")
     command.add_argument("--dry-run", action="store_true",
                          help="Made-up scores instead of training, to test the pipeline in seconds")
@@ -49,7 +50,7 @@ def training_runner(args, parser):
     def train_fn(run, **kwargs):
         if not data:
             data["splits"] = load_processed(Path(args.data_dir), args.limit)
-        return train_run(run, data["splits"], **kwargs)
+        return train_run(run, data["splits"], tensorboard_dir=args.log_dir, **kwargs)
     return train_fn
 
 
@@ -117,6 +118,10 @@ def main() -> None:
     evaluation.add_argument("--test-run", help="Run the final test evaluation for this one validation-selected model")
     evaluation.add_argument("--num-workers", type=int, default=0)
 
+    tb_import = sub.add_parser("tensorboard-import", help="Import saved training JSON histories into TensorBoard")
+    tb_import.add_argument("--runs-dir", nargs="+", default=["outputs/tables/transfer_runs"])
+    tb_import.add_argument("--log-dir", help="TensorBoard log root (default: root outputs/tensorboard)")
+
     args = parser.parse_args()
     if args.command == "gradcam":
         from src.grad_cam import run_reports
@@ -159,6 +164,9 @@ def main() -> None:
     elif args.command == "evaluate":
         run_evaluation(Path(args.data_dir), Path(args.runs_dir), Path(args.checkpoint_dir),
                        Path(args.table_dir), Path(args.fig_dir), args.runs, args.test_run, args.num_workers)
+    elif args.command == "tensorboard-import":
+        from src.training.tracking import import_saved_runs
+        import_saved_runs(args.runs_dir, args.log_dir)
 
 
 if __name__ == "__main__":

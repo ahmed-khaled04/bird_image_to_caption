@@ -47,3 +47,35 @@ model, run = load_checkpoint("models/YOUR_CHECKPOINT.pth", device="cpu")
 Replace placeholder filenames with the paths printed after training. The loader also
 accepts previously saved `run`/`state_dict` `.pt` files. See the
 [checkpoint guide](docs/checkpoints.md) for the format, failure behavior, and direct `fit()` usage.
+
+## TensorBoard experiment tracking (section 5.7)
+
+Install the updated dependencies in your virtual environment:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+All real runs using shared `fit()` now log automatically to unique folders in
+`outputs/tensorboard/`. Scratch, frozen/fine-tuned transfer models, tuning trials,
+best-setting retraining, and the scratch notebook share this integration.
+
+Open the dashboard from a second terminal at the project root:
+
+```bash
+tensorboard --logdir outputs/tensorboard --host 127.0.0.1 --port 6006
+```
+
+Visit <http://localhost:6006>. Compare loss/accuracy curves in **Scalars**, configurations
+and best validation accuracy in **HParams**, and checkpoint paths/status in **Text**.
+Weights continue to be saved in `models/`; logs contain their references.
+
+Import existing training histories without retraining:
+
+```bash
+python -m src.cli tensorboard-import --runs-dir outputs/tables/transfer_runs outputs/my_training/tables/transfer_runs
+```
+
+Imported runs are labeled historical. Repeated imports skip identical results; synthetic
+results are excluded. Old results that lack checkpoint references are marked as such.
+See [the TensorBoard guide](docs/tensorboard.md) for tags, run comparison, and report evidence.

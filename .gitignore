@@ -16,6 +16,8 @@ __pycache__/
 # experiment tracking
 mlruns/
 wandb/
+/outputs/tensorboard/
+events.out.tfevents.*
 
 # model weights and checkpoints (shared through Google Drive)
 *.pt
