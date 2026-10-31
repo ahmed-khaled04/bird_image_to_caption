@@ -31,6 +31,12 @@ Historical results that lack checkpoints are not retroactively populated or retr
 `--limit` runs also save weights; their configuration and unique filename distinguish them.
 `--dry-run` only fabricates scores and therefore saves no weights.
 
+The `evaluate` command uses each experiment JSON's exact `checkpoint_path`. If a teammate's
+absolute path is unavailable locally, copy the same filename into `models/` (or the folder
+specified with `evaluate --checkpoint-dir`). Historical results without a checkpoint reference
+can still use `<run-name>.pt`; the default evaluator also checks `outputs/checkpoints/` for
+these legacy files. A missing explicit reference raises an error instead of guessing another run.
+
 `--checkpoint-dir` remains available for subdirectories inside `models/`, such as
 `--checkpoint-dir models/experiment_group`. Locations outside root `models/` are rejected.
 This changes new-save destinations, while old checkpoints can still be loaded from any path.

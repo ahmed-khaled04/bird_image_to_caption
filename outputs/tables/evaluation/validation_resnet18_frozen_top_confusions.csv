@@ -1,0 +1,294 @@
+true_species,predicted_species,count
+Western Gull,Slaty backed Gull,4
+Herring Gull,Slaty backed Gull,4
+Wilson Warbler,Yellow Warbler,4
+Warbling Vireo,Red eyed Vireo,4
+Henslow Sparrow,Le Conte Sparrow,3
+Ringed Kingfisher,Green Kingfisher,3
+Hooded Oriole,Baltimore Oriole,3
+Elegant Tern,Caspian Tern,3
+Forsters Tern,Common Tern,3
+Prairie Warbler,Magnolia Warbler,3
+Myrtle Warbler,Horned Lark,2
+Prothonotary Warbler,American Goldfinch,2
+Canada Warbler,Magnolia Warbler,2
+Pine Warbler,Yellow Warbler,2
+Boat tailed Grackle,Shiny Cowbird,2
+Shiny Cowbird,Brewer Blackbird,2
+White breasted Nuthatch,Clark Nutcracker,2
+Orchard Oriole,Baltimore Oriole,2
+Western Grebe,Pacific Loon,2
+Northern Fulmar,Sooty Albatross,2
+Savannah Sparrow,Song Sparrow,2
+American Crow,Shiny Cowbird,2
+Blue Grosbeak,Indigo Bunting,2
+Northern Fulmar,Black footed Albatross,2
+Black capped Vireo,Dark eyed Junco,2
+Tennessee Warbler,Red eyed Vireo,2
+Elegant Tern,Common Tern,2
+Worm eating Warbler,Palm Warbler,2
+Blue headed Vireo,Myrtle Warbler,2
+Loggerhead Shrike,Great Grey Shrike,2
+California Gull,Glaucous winged Gull,2
+Whip poor Will,Nighthawk,2
+Ring billed Gull,Slaty backed Gull,2
+Chipping Sparrow,American Pipit,2
+California Gull,Slaty backed Gull,2
+Chestnut sided Warbler,Red eyed Vireo,2
+Bank Swallow,Least Flycatcher,1
+Barn Swallow,Cliff Swallow,1
+Cliff Swallow,Barn Swallow,1
+Bank Swallow,Mockingbird,1
+White throated Sparrow,Savannah Sparrow,1
+White throated Sparrow,Tree Sparrow,1
+Bank Swallow,Tree Swallow,1
+Black Tern,Mockingbird,1
+Scarlet Tanager,Summer Tanager,1
+Artic Tern,Eared Grebe,1
+Artic Tern,Common Tern,1
+Caspian Tern,Ring billed Gull,1
+Caspian Tern,Common Tern,1
+Common Tern,Caspian Tern,1
+Common Tern,Least Tern,1
+Forsters Tern,Ring billed Gull,1
+White throated Sparrow,Chipping Sparrow,1
+Black footed Albatross,Sooty Albatross,1
+White crowned Sparrow,Mockingbird,1
+Clay colored Sparrow,Field Sparrow,1
+Field Sparrow,Ovenbird,1
+House Sparrow,Carolina Wren,1
+House Sparrow,Chestnut sided Warbler,1
+House Sparrow,Tree Sparrow,1
+Clay colored Sparrow,Marsh Wren,1
+Clay colored Sparrow,Prairie Warbler,1
+Chipping Sparrow,Brown Thrasher,1
+Field Sparrow,Savannah Sparrow,1
+Chipping Sparrow,Field Sparrow,1
+Brewer Sparrow,Sage Thrasher,1
+Brewer Sparrow,Vesper Sparrow,1
+Brewer Sparrow,Lincoln Sparrow,1
+Brewer Sparrow,Le Conte Sparrow,1
+Brewer Sparrow,Least Flycatcher,1
+Field Sparrow,Grasshopper Sparrow,1
+Grasshopper Sparrow,Vesper Sparrow,1
+White crowned Sparrow,Horned Lark,1
+Forsters Tern,Least Tern,1
+Vesper Sparrow,Grasshopper Sparrow,1
+Vesper Sparrow,Fox Sparrow,1
+Tree Sparrow,Pine Grosbeak,1
+Song Sparrow,Nelson Sharp tailed Sparrow,1
+Song Sparrow,Fox Sparrow,1
+Seaside Sparrow,Cactus Wren,1
+Seaside Sparrow,Western Meadowlark,1
+Harris Sparrow,Lincoln Sparrow,1
+Savannah Sparrow,Brown Thrasher,1
+Savannah Sparrow,Western Meadowlark,1
+Lincoln Sparrow,Song Sparrow,1
+Lincoln Sparrow,Le Conte Sparrow,1
+Le Conte Sparrow,Nelson Sharp tailed Sparrow,1
+Le Conte Sparrow,Field Sparrow,1
+Seaside Sparrow,Grasshopper Sparrow,1
+Black capped Vireo,Green Kingfisher,1
+Least Tern,Common Tern,1
+Myrtle Warbler,Savannah Sparrow,1
+Nashville Warbler,Magnolia Warbler,1
+Nashville Warbler,Palm Warbler,1
+Orange crowned Warbler,Dark eyed Junco,1
+Orange crowned Warbler,Seaside Sparrow,1
+Palm Warbler,Red eyed Vireo,1
+Palm Warbler,Magnolia Warbler,1
+Palm Warbler,Marsh Wren,1
+Pine Warbler,Palm Warbler,1
+Prairie Warbler,Yellow Warbler,1
+Swainson Warbler,Acadian Flycatcher,1
+Tennessee Warbler,Great Crested Flycatcher,1
+Tennessee Warbler,Yellow bellied Flycatcher,1
+Tennessee Warbler,Philadelphia Vireo,1
+Worm eating Warbler,Red eyed Vireo,1
+Worm eating Warbler,Louisiana Waterthrush,1
+Northern Waterthrush,Black and white Warbler,1
+Northern Waterthrush,Louisiana Waterthrush,1
+Louisiana Waterthrush,Cliff Swallow,1
+Louisiana Waterthrush,Northern Waterthrush,1
+Cedar Waxwing,Bohemian Waxwing,1
+American Three toed Woodpecker,Green Kingfisher,1
+Bewick Wren,Tree Sparrow,1
+Bewick Wren,Brown Thrasher,1
+Carolina Wren,Swainson Warbler,1
+Marsh Wren,Le Conte Sparrow,1
+Marsh Wren,Nelson Sharp tailed Sparrow,1
+Marsh Wren,Carolina Wren,1
+Marsh Wren,House Wren,1
+Winter Wren,Brewer Blackbird,1
+Myrtle Warbler,Chestnut sided Warbler,1
+Magnolia Warbler,Yellow Warbler,1
+Green tailed Towhee,Florida Jay,1
+Kentucky Warbler,Palm Warbler,1
+Brown Thrasher,Northern Flicker,1
+Brown Thrasher,Prairie Warbler,1
+Sage Thrasher,Brown Thrasher,1
+Black capped Vireo,Brewer Blackbird,1
+Black throated Sparrow,Gray Kingbird,1
+Red eyed Vireo,Kentucky Warbler,1
+Red eyed Vireo,Palm Warbler,1
+Warbling Vireo,House Wren,1
+White eyed Vireo,Yellow Warbler,1
+Yellow throated Vireo,Red eyed Vireo,1
+Yellow throated Vireo,White eyed Vireo,1
+Yellow throated Vireo,Pine Warbler,1
+Bay breasted Warbler,Nelson Sharp tailed Sparrow,1
+Bay breasted Warbler,Red eyed Vireo,1
+Black throated Blue Warbler,Boat tailed Grackle,1
+Black throated Blue Warbler,Red eyed Vireo,1
+Blue winged Warbler,Magnolia Warbler,1
+Blue winged Warbler,Prairie Warbler,1
+Blue winged Warbler,Wilson Warbler,1
+Canada Warbler,White eyed Vireo,1
+Cape May Warbler,Magnolia Warbler,1
+Cape May Warbler,Palm Warbler,1
+Cape May Warbler,Prairie Warbler,1
+Golden winged Warbler,White eyed Vireo,1
+Golden winged Warbler,Chestnut sided Warbler,1
+Golden winged Warbler,Myrtle Warbler,1
+Hooded Warbler,Magnolia Warbler,1
+Hooded Warbler,Orange crowned Warbler,1
+Hooded Warbler,Wilson Warbler,1
+Black throated Sparrow,Black capped Vireo,1
+White necked Raven,Frigatebird,1
+Black throated Sparrow,Green Jay,1
+Gray crowned Rosy Finch,American Pipit,1
+Great Crested Flycatcher,Red eyed Vireo,1
+Great Crested Flycatcher,American Pipit,1
+Great Crested Flycatcher,Tropical Kingbird,1
+Acadian Flycatcher,Mockingbird,1
+Acadian Flycatcher,Yellow bellied Flycatcher,1
+Acadian Flycatcher,Least Flycatcher,1
+Yellow billed Cuckoo,Black billed Cuckoo,1
+Rose breasted Grosbeak,Red eyed Vireo,1
+Mangrove Cuckoo,Barn Swallow,1
+Mangrove Cuckoo,Tropical Kingbird,1
+Mangrove Cuckoo,Yellow breasted Chat,1
+Black billed Cuckoo,Chipping Sparrow,1
+Black billed Cuckoo,Mangrove Cuckoo,1
+Fish Crow,Brewer Blackbird,1
+Least Flycatcher,Yellow bellied Flycatcher,1
+Least Flycatcher,Cliff Swallow,1
+Least Flycatcher,Nashville Warbler,1
+Least Flycatcher,House Wren,1
+Olive sided Flycatcher,Least Flycatcher,1
+Olive sided Flycatcher,Yellow bellied Flycatcher,1
+Olive sided Flycatcher,Gray Kingbird,1
+Olive sided Flycatcher,Black Tern,1
+Scissor tailed Flycatcher,Gray Kingbird,1
+Scissor tailed Flycatcher,Mockingbird,1
+Scissor tailed Flycatcher,Philadelphia Vireo,1
+Yellow bellied Flycatcher,Great Crested Flycatcher,1
+Northern Fulmar,Slaty backed Gull,1
+Gadwall,Red breasted Merganser,1
+Boat tailed Grackle,Brewer Blackbird,1
+Eared Grebe,Red breasted Merganser,1
+Horned Grebe,Western Grebe,1
+Fish Crow,Groove billed Ani,1
+American Crow,Brewer Blackbird,1
+Brown Creeper,Brown Thrasher,1
+Lazuli Bunting,Dark eyed Junco,1
+Laysan Albatross,Slaty backed Gull,1
+Laysan Albatross,Least Tern,1
+Sooty Albatross,Black Tern,1
+Groove billed Ani,American Crow,1
+Crested Auklet,Red faced Cormorant,1
+Least Auklet,Parakeet Auklet,1
+Least Auklet,Shiny Cowbird,1
+Rhinoceros Auklet,Eared Grebe,1
+Brewer Blackbird,Dark eyed Junco,1
+Red winged Blackbird,Shiny Cowbird,1
+Rusty Blackbird,Eastern Towhee,1
+Yellow headed Blackbird,Hooded Oriole,1
+Indigo Bunting,Boat tailed Grackle,1
+Lazuli Bunting,Indigo Bunting,1
+Lazuli Bunting,Gray Kingbird,1
+Brown Creeper,Green Kingfisher,1
+Lazuli Bunting,Cerulean Warbler,1
+Painted Bunting,Blue Grosbeak,1
+Cardinal,Summer Tanager,1
+Gray Catbird,Mockingbird,1
+Yellow breasted Chat,Magnolia Warbler,1
+Eastern Towhee,Yellow bellied Flycatcher,1
+Eastern Towhee,Harris Sparrow,1
+Eastern Towhee,Mourning Warbler,1
+Chuck will Widow,House Wren,1
+Brandt Cormorant,Pelagic Cormorant,1
+Pelagic Cormorant,Frigatebird,1
+Bronzed Cowbird,Rusty Blackbird,1
+Shiny Cowbird,Bronzed Cowbird,1
+Shiny Cowbird,Florida Jay,1
+Pied billed Grebe,Pacific Loon,1
+Pigeon Guillemot,Brewer Blackbird,1
+Baird Sparrow,Le Conte Sparrow,1
+Orchard Oriole,Eastern Towhee,1
+Western Wood Pewee,Least Flycatcher,1
+Ovenbird,Fox Sparrow,1
+Ovenbird,Acadian Flycatcher,1
+Scott Oriole,Magnolia Warbler,1
+Scott Oriole,Hooded Oriole,1
+Orchard Oriole,Pine Warbler,1
+Orchard Oriole,Red winged Blackbird,1
+Pigeon Guillemot,Common Tern,1
+White breasted Nuthatch,Magnolia Warbler,1
+Clark Nutcracker,Gray Kingbird,1
+Nighthawk,Fox Sparrow,1
+Nighthawk,Whip poor Will,1
+Nighthawk,Pomarine Jaeger,1
+Nighthawk,Rusty Blackbird,1
+Western Wood Pewee,Olive sided Flycatcher,1
+Western Wood Pewee,Yellow bellied Flycatcher,1
+Western Wood Pewee,Philadelphia Vireo,1
+Sayornis,Least Flycatcher,1
+Sayornis,Tropical Kingbird,1
+Sayornis,Cliff Swallow,1
+Sayornis,Red eyed Vireo,1
+Horned Puffin,Red faced Cormorant,1
+Horned Puffin,White Pelican,1
+White necked Raven,American Crow,1
+Laysan Albatross,Black footed Albatross,1
+American Redstart,Eastern Towhee,1
+American Redstart,Magnolia Warbler,1
+Geococcyx,Western Meadowlark,1
+Loggerhead Shrike,Black throated Blue Warbler,1
+Great Grey Shrike,Blue Jay,1
+Great Grey Shrike,Mockingbird,1
+Mockingbird,House Wren,1
+Mockingbird,Gray Kingbird,1
+Red breasted Merganser,Common Tern,1
+Pomarine Jaeger,Slaty backed Gull,1
+Glaucous winged Gull,Heermann Gull,1
+Glaucous winged Gull,Slaty backed Gull,1
+Glaucous winged Gull,Red legged Kittiwake,1
+Ring billed Gull,Least Tern,1
+Slaty backed Gull,Glaucous winged Gull,1
+Western Gull,Herring Gull,1
+Anna Hummingbird,Green Violetear,1
+Anna Hummingbird,Cactus Wren,1
+Anna Hummingbird,House Wren,1
+Ruby throated Hummingbird,Anna Hummingbird,1
+Ruby throated Hummingbird,Rufous Hummingbird,1
+Rufous Hummingbird,Ruby throated Hummingbird,1
+Long tailed Jaeger,Slaty backed Gull,1
+Long tailed Jaeger,Mockingbird,1
+Pomarine Jaeger,Long tailed Jaeger,1
+Red breasted Merganser,Gadwall,1
+Blue Jay,Florida Jay,1
+Florida Jay,Blue Jay,1
+Dark eyed Junco,Eastern Towhee,1
+Gray Kingbird,Great Grey Shrike,1
+Gray Kingbird,Cedar Waxwing,1
+Gray Kingbird,Bewick Wren,1
+Belted Kingfisher,Gray Kingbird,1
+Belted Kingfisher,Great Grey Shrike,1
+Belted Kingfisher,Magnolia Warbler,1
+Pied Kingfisher,Bobolink,1
+Ringed Kingfisher,Belted Kingfisher,1
+White breasted Kingfisher,Rufous Hummingbird,1
+Red legged Kittiwake,Slaty backed Gull,1
+Pacific Loon,Pigeon Guillemot,1
+Winter Wren,Vesper Sparrow,1
