@@ -93,6 +93,20 @@ which may differ from the last point in the curves.
 
 ## Custom locations and shared utilities
 
+Report-ready exports are also available without screenshots:
+
+```bash
+python -m src.cli tracking-export --runs-dir outputs/tables/transfer_runs outputs/my_training/tables/transfer_runs --out-dir outputs/tracking_evidence
+```
+
+Run the historical importer above first if the event files are absent. The exporter reads
+actual event curves, Text, and HParams, checks configurations/epoch metrics against source
+JSON, verifies available checkpoint references, and writes PNGs, CSV/JSON exports, a
+checkpoint inventory with SHA-256, and a Markdown report. Original result JSON files are
+not changed. Historical weights that are absent remain explicitly missing; exports do not
+reconstruct them or silently attach another run's weights. See
+`outputs/tracking_evidence/README.md` and `docs/reproducibility.md` for the current audit.
+
 `transfer` and `tune` accept `--log-dir <root>`; weights still go to `models/`.
 For direct/notebook use, `fit(..., tensorboard_dir=<root>)` sets the root. The historical
 import command also supports `--log-dir`. Point TensorBoard at the same root when launching.

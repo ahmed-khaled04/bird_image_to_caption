@@ -1,0 +1,10 @@
+source,epochs,batch_size,image_size,optimizer,weight_decay,dropout,seed,num_workers,name,encoder,freeze,lr
+outputs/my_training/tables/transfer_runs/efficientnet_b0_finetune.json,10,32,224,adamw,0.0001,0.3,42,0,efficientnet_b0_finetune,efficientnet_b0,False,0.0001
+outputs/my_training/tables/transfer_runs/scratch.json,30,32,224,adamw,0.0001,0.3,42,0,scratch,scratch,False,0.001
+outputs/tables/transfer_runs/efficientnet_b0_finetune.json,10,32,224,adamw,0.0001,0.3,42,0,efficientnet_b0_finetune,efficientnet_b0,False,0.0001
+outputs/tables/transfer_runs/efficientnet_b0_frozen.json,10,32,224,adamw,0.0001,0.3,42,0,efficientnet_b0_frozen,efficientnet_b0,True,0.001
+outputs/tables/transfer_runs/resnet18_finetune.json,10,32,224,adamw,0.0001,0.3,42,0,resnet18_finetune,resnet18,False,0.0001
+outputs/tables/transfer_runs/resnet18_frozen.json,10,32,224,adamw,0.0001,0.3,42,0,resnet18_frozen,resnet18,True,0.001
+outputs/tables/transfer_runs/resnet50_finetune.json,10,32,224,adamw,0.0001,0.3,42,0,resnet50_finetune,resnet50,False,0.0001
+outputs/tables/transfer_runs/resnet50_frozen.json,10,32,224,adamw,0.0001,0.3,42,0,resnet50_frozen,resnet50,True,0.001
+outputs/tables/transfer_runs/scratch.json,30,32,224,adamw,0.0001,0.3,42,0,scratch,scratch,False,0.001

@@ -1,0 +1,48 @@
+{
+  "review_date": "2026-10-31",
+  "python": "3.12.15",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "unit_tests": {
+    "passed": 30,
+    "failed": 0,
+    "command": "python -m unittest discover -s tests -v"
+  },
+  "training_smoke": {
+    "config": "configs/smoke.yaml",
+    "images_per_split": 8,
+    "epochs": 1,
+    "status": "passed",
+    "results": "outputs/reproducibility/smoke_training/tables/transfer_runs/scratch_smoke.json"
+  },
+  "full_validation": {
+    "images": 898,
+    "scratch_accuracy": 0.3151447661469933,
+    "efficientnet_b0_finetune_accuracy": 0.8062360801781737
+  },
+  "inference": {
+    "status": "passed",
+    "result": "outputs/reproducibility/prediction.json"
+  },
+  "gradcam": {
+    "status": "passed",
+    "models": 2,
+    "figures": 12,
+    "split": "validation"
+  },
+  "tracking": {
+    "audited_runs": 9,
+    "curves_config_best_metric_verified": 9,
+    "verified_checkpoints": 2,
+    "missing_original_checkpoints": 7
+  },
+  "missing_reference_cli": {
+    "status": "fails explicitly before writing reports",
+    "exit_code": 1
+  },
+  "limits": [
+    "Original seven team checkpoints not recovered",
+    "Full original training and initial dataset downloads not repeated",
+    "Training smoke is not a full performance or tuning result",
+    "Original held-out test evaluation not repeated"
+  ]
+}

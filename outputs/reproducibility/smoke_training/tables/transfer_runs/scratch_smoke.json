@@ -1,0 +1,34 @@
+{
+  "run": {
+    "epochs": 1,
+    "batch_size": 4,
+    "image_size": 224,
+    "optimizer": "adamw",
+    "weight_decay": 0.0001,
+    "dropout": 0.3,
+    "seed": 42,
+    "num_workers": 0,
+    "name": "scratch_smoke",
+    "encoder": "scratch",
+    "freeze": false,
+    "lr": 0.001
+  },
+  "mode": "from scratch",
+  "trainable_params": 4983528,
+  "total_params": 4983528,
+  "best_val_accuracy": 0.0,
+  "best_epoch": 1,
+  "minutes": 0.03515083471672066,
+  "device": "mps",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 5.325293064117432,
+      "train_accuracy": 0.0,
+      "val_loss": 5.30321741104126,
+      "val_accuracy": 0.0
+    }
+  ],
+  "checkpoint_path": "/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/models/scratch_scratch_smoke_20261031T180442300579Z_6164c3c5b30248a0b577e0b4185522d7_best.pth",
+  "tensorboard_dir": "/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/tensorboard/smoke/scratch_scratch_smoke_20261031T180440218923Z_98925ea9d36c442ea788374c027e8bbd"
+}

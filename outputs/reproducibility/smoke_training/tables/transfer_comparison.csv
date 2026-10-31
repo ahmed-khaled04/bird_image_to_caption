@@ -1,0 +1,2 @@
+run,encoder,mode,trainable_params_M,total_params_M,lr,epochs,best_epoch,best_val_accuracy,minutes,minutes_per_epoch
+scratch_smoke,scratch,from scratch,4.983528,4.983528,0.001,1,1,0.0,0.03515083471672066,0.03515083471672066

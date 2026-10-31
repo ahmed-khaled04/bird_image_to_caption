@@ -1,0 +1,35 @@
+{
+  "image": "outputs/reproducibility/validation_00000.png",
+  "checkpoint": "models/efficientnet_b0_efficientnet_b0_finetune_20261031T162003884412Z_9336253ff19d4132b4d5f6c5fe3343b4_best.pth",
+  "run": "efficientnet_b0_finetune",
+  "encoder": "efficientnet_b0",
+  "device": "cpu",
+  "image_size": 224,
+  "predictions": [
+    {
+      "class_id": 17,
+      "species": "Spotted Catbird",
+      "probability": 0.5468742251396179
+    },
+    {
+      "class_id": 122,
+      "species": "Henslow Sparrow",
+      "probability": 0.0857359990477562
+    },
+    {
+      "class_id": 112,
+      "species": "Baird Sparrow",
+      "probability": 0.033135753124952316
+    },
+    {
+      "class_id": 127,
+      "species": "Seaside Sparrow",
+      "probability": 0.03245169296860695
+    },
+    {
+      "class_id": 162,
+      "species": "Cape May Warbler",
+      "probability": 0.023050231859087944
+    }
+  ]
+}
