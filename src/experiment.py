@@ -20,6 +20,7 @@ from torch import nn
 from src.data.loaders import build_dataloaders
 from src.data.loader import class_names
 from src.models.factory import build_classifier
+from src.training.tracking import log_test_metrics
 
 OPTIMIZERS = {
     "adam": torch.optim.Adam,
@@ -98,7 +99,8 @@ def mode_name(run: dict) -> str:
     return "frozen" if run["freeze"] else "fine-tune"
 
 
-def train_run(run: dict, data: DatasetDict, test: bool = False, checkpoint_dir: Path = None) -> dict:
+def train_run(run: dict, data: DatasetDict, test: bool = False, checkpoint_dir: Path = None,
+              tensorboard_dir: Path = None) -> dict:
     """Train on train, keep the epoch with the best validation accuracy, and score it once on test if `test`.
     Tuning trials pass test=False: settings are chosen on validation only."""
     fit, evaluate = training_code()
@@ -118,7 +120,7 @@ def train_run(run: dict, data: DatasetDict, test: bool = False, checkpoint_dir: 
 
     start = time.perf_counter()
     trained = fit(model, loaders, loss_fn, optimizer, device, run["epochs"], run_config=run,
-                  class_labels=class_names(data["train"]), checkpoint_dir=checkpoint_dir)
+                  class_labels=class_names(data["train"]), checkpoint_dir=checkpoint_dir, tensorboard_dir=tensorboard_dir)
     seconds = time.perf_counter() - start
     model.load_state_dict(trained["best_state"])  # back to the best epoch, not the last one
 
@@ -127,9 +129,12 @@ def train_run(run: dict, data: DatasetDict, test: bool = False, checkpoint_dir: 
         "best_val_accuracy": float(trained["best_val_accuracy"]), "best_epoch": int(trained["best_epoch"]),
         "minutes": seconds / 60, "device": str(device), "history": trained["history"],
         "checkpoint_path": trained["checkpoint_path"],
+        "tensorboard_dir": trained["tensorboard_dir"],
     }
     if test:
-        result.update(test_metrics(evaluate(model, loaders["test"], loss_fn, device)))
+        metrics = test_metrics(evaluate(model, loaders["test"], loss_fn, device))
+        result.update(metrics)
+        log_test_metrics(trained["tensorboard_dir"], metrics, trained["best_epoch"])
     return result
 
 

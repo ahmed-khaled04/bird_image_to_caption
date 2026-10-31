@@ -19,6 +19,7 @@ def add_training_arguments(command) -> None:
     command.add_argument("--data-dir", default="data/processed", help="Cleaned splits saved by the clean command")
     command.add_argument("--checkpoint-dir", help="Optional subfolder inside root models/ (default: root models/)")
     command.add_argument("--limit", type=int, help="Use only the first N images of each split, for a quick check")
+    command.add_argument("--log-dir", help="TensorBoard log root (default: root outputs/tensorboard)")
     command.add_argument("--num-workers", type=int, help="Data loader workers (0 avoids shared-memory restrictions)")
     command.add_argument("--dry-run", action="store_true",
                          help="Made-up scores instead of training, to test the pipeline in seconds")
@@ -49,7 +50,7 @@ def training_runner(args, parser):
     def train_fn(run, **kwargs):
         if not data:
             data["splits"] = load_processed(Path(args.data_dir), args.limit)
-        return train_run(run, data["splits"], **kwargs)
+        return train_run(run, data["splits"], tensorboard_dir=args.log_dir, **kwargs)
     return train_fn
 
 

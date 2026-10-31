@@ -19,7 +19,7 @@ from src.evaluation.classification import evaluate
 from src.evaluation.grad_cam import GradCAM
 from src.grad_cam import load_checkpoint as gradcam_load_checkpoint
 from src.models.factory import build_classifier
-from src.training import checkpoints
+from src.training import checkpoints, tracking
 from src.training.search import compare_searches, run_search
 from src.training.trainer import fit
 from src.transfer import comparison_table, run_and_save
@@ -39,6 +39,9 @@ class CheckpointTests(unittest.TestCase):
         directory_patch = patch.object(checkpoints, 'MODELS_DIR', self.directory)
         directory_patch.start()
         self.addCleanup(directory_patch.stop)
+        tracking_patch = patch.object(tracking, 'LOGS_DIR', self.root / 'tensorboard')
+        tracking_patch.start()
+        self.addCleanup(tracking_patch.stop)
         self.labels = ['a', 'b', 'c', 'd', 'e']
         split = Dataset.from_dict({'label': [0, 1, 2, 3, 4]},
                                   features=Features({'label': ClassLabel(names=self.labels)}))
