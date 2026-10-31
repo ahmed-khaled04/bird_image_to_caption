@@ -77,6 +77,27 @@ The existing `src.grad_cam.load_checkpoint` import delegates to this same loader
 `.pt` files containing `run` and `state_dict` still load without the new metadata fields.
 Grad-CAM calculations and dataset preprocessing are unchanged.
 
+## Evaluation, inference, and historical references
+
+`evaluate` now resolves `checkpoint_path` from the selected result JSON rather than assuming
+every run is stored as `<run-name>.pt`. An absolute path from another machine can resolve
+by its exact basename inside `models/` or the supplied `--checkpoint-dir`. Legacy run-name
+files remain supported when there is no explicit reference. Multiple legacy candidates,
+setting mismatches, different best epochs/scores, and incorrect dataset label order fail
+explicitly. Extra reconstruction metadata in new checkpoints is allowed.
+
+`python -m src.cli predict --checkpoint models/YOUR_CHECKPOINT.pth --image path/to/bird.jpg`
+restores the same model and deterministic evaluation preprocessing without loading a dataset.
+New files contain species labels. A legacy file without labels needs `--labels labels.json`,
+a JSON list in the original class-index order. See the README for verified filenames and
+complete commands.
+
+`python -m src.cli tracking-export` checks the available saved histories and weights and
+exports metadata/hashes to `outputs/tracking_evidence/`. Recover original historical weights
+from their training environment before adding a reference to an old result. A rerun must
+keep its own results and checkpoint; matching settings or scores alone do not establish
+historical provenance.
+
 ## Shared training usage
 
 ```python

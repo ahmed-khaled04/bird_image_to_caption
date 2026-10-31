@@ -133,12 +133,12 @@ Saved test scores: accuracy **77.08%**, top-five accuracy **95.17%**, macro F1 *
 - [x] Implement TensorBoard logging of hyperparameters, epoch metrics/curves, and checkpoint references for shared training. **Worked on by: Yousef Sameh.** Evidence: `4aad4b7`, `c063bdd`, `src/training/tracking.py`.
 - [x] Implement historical-run import and comparison documentation; retain imported event files. **Worked on by: Yousef Sameh.** Evidence: `0a9760a`, `7f9a339`, `outputs/tensorboard/imported/`, `docs/tensorboard.md`. Historical imports cannot restore missing weights or references.
 - [x] Expose EDA, cleaning, augmentation, transfer training, tuning, evaluation, Grad-CAM, and tracking import through the CLI. **Worked on by: Ahmed Khaled (cleaning/augmentation), Mohamed Dahy (EDA/transfer/tuning), Saifeldin Tamer (evaluation), and Yousef Sameh (Grad-CAM/tracking import and integration).** Evidence: `src/cli.py` and respective feature commits.
-- [ ] Recover and verify weights/references for historical runs that lack them. **Owner: unassigned.**
-- [ ] Update and verify evaluation with the current checkpoint naming scheme. **Owner: unassigned.** `src/evaluation/report.py` still expects `<run-name>.pt`; automatic saving now uses unique `.pth` filenames.
-- [ ] Verify/document reproducible classification training, evaluation, and Grad-CAM commands using actual checkpoint paths. **Owner: unassigned.** Feature guides exist; a complete reproducibility walkthrough is not evidenced.
-- [ ] Add and verify a single-image classification inference CLI. **Owner: unassigned.** No `predict` command is present.
-- [ ] Complete the README with environment setup and exact training/inference instructions. **Owner: unassigned.**
-- [ ] Export tracking screenshots/evidence for the report, check every run's coverage, and resolve missing checkpoint references. **Owner: unassigned.** Logging and historical import are implemented; full historical coverage is not established.
+- [ ] Recover the seven original historical checkpoints and verify their provenance/references. **Recovery owner: unassigned; audit completed by Yousef Sameh.** `outputs/tracking_evidence/coverage.csv` verifies two local runs and identifies all seven missing originals. The local reruns have different histories and cannot replace the originals silently. See `docs/reproducibility.md`.
+- [x] Update and verify evaluation with the current checkpoint naming scheme. **Worked on by: Yousef Sameh.** The evaluator resolves explicit/relocated `.pth` references and legacy `.pt` files, checks settings and best-epoch/score metadata, validates labels, and restores via the shared loader. Both local models passed full validation; evidence: `outputs/reproducibility/evaluation/`.
+- [x] Verify/document classification training, evaluation, and Grad-CAM commands using actual checkpoint paths. **Worked on by: Yousef Sameh.** `README.md`, `docs/reproducibility.md`, and `requirements-tested.txt`; verified real eight-image training, full validation of both local checkpoints, and 12 regenerated Grad-CAM figures. Full original training was not repeated.
+- [x] Add and verify a single-image classification inference CLI. **Worked on by: Yousef Sameh.** `python -m src.cli predict` uses checkpoint labels and deterministic evaluation transforms; verified ranked JSON predictions with a real trained EfficientNet checkpoint. Evidence: `src/predict.py`, `tests/test_inference.py`, `outputs/reproducibility/prediction.json`.
+- [x] Complete the README with environment setup and exact training/inference instructions. **Worked on by: Yousef Sameh.** Includes data preparation, full and smoke training, evaluation, image prediction, actual weight paths, Grad-CAM, tracking/export commands, and explicit missing-weight limitations.
+- [x] Export tracking evidence for the report and audit every saved run's coverage. **Worked on by: Yousef Sameh.** `python -m src.cli tracking-export` exports actual TensorBoard curves, configuration/HParams, source/weight hashes, and a coverage table. All nine saved histories/configurations/best metrics match events; two local checkpoints are verified and seven original references remain missing under the recovery item above. Evidence: `outputs/tracking_evidence/`.
 
 ### Benchmarking, report, and submission
 
@@ -165,8 +165,8 @@ This table records evidenced contributions. It is not a grading allocation, and 
 
 1. Assign owners and run both real tuning searches; compare scores, trial counts, and time, then evaluate the best tuned setting.
 2. Resolve evaluation/checkpoint compatibility and missing historical checkpoint references.
-3. Add classification inference and complete reproducible setup/run instructions.
-4. Export tracking evidence, add the classification benchmark, and assemble the report, including the existing Grad-CAM analysis.
+3. Use the verified classification inference and setup/run instructions; obtain the missing original weights for historical-run reproduction.
+4. Use the exported tracking evidence, add the classification benchmark, and assemble the report, including the existing Grad-CAM analysis.
 5. Check consistency and submit through the LMS.
 
 ## Outside Milestone 1
@@ -188,4 +188,4 @@ Image colorization and caption generation belong to Milestone 2. Caption cleanin
 - CLI/evaluation integration: `src/cli.py`, `src/evaluation/report.py`.
 - Contribution evidence: Git author history, referenced commit hashes, and project chats for local runs/figure review.
 
-Status review checks file contents, saved outputs, and commit history. It does not claim that training or software tests were rerun for this checklist.
+Initial status review checked file contents, saved outputs, and commit history. The reproducibility follow-up ran 30 passing tests, real limited-data training, full validation for both available local checkpoints, image prediction, Grad-CAM generation, and tracking export. Seven original historical checkpoints are still unavailable; see `docs/reproducibility.md` for verification scope and evidence.
