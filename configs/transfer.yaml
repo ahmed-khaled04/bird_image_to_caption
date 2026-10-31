@@ -1,5 +1,5 @@
 # Transfer learning vs the from-scratch baseline (Task 1.2, point 3): python -m src.cli transfer
-# Every run trains on train, keeps the epoch with the best validation accuracy and is scored once on test.
+# Every run trains on train and keeps the epoch with the best validation accuracy.
 # A run takes the defaults and overrides some of them.
 defaults:
   epochs: 10

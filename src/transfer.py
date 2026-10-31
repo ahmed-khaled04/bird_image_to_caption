@@ -1,4 +1,4 @@
-"""Transfer learning pipeline: train every configured run, then one comparison table and learning-curve plots.
+"""Transfer learning pipeline: train configured runs and compare validation results.
 
 Each finished run is saved as its own JSON file (settings, scores and per-epoch history). A restarted command
 skips the runs that already have a file, and runs done on different machines (Colab, Kaggle) are merged by
@@ -33,7 +33,7 @@ def run_and_save(run: dict, train_fn, runs_dir: Path, checkpoint_dir: Path = Non
                              "delete it to train it again")
         print(f"{run['name']}: already done, delete {path} to train it again")
         return saved
-    result = train_fn(run, test=True, checkpoint_dir=checkpoint_dir)
+    result = train_fn(run, test=False, checkpoint_dir=checkpoint_dir)
     runs_dir.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(result, indent=2, default=float))  # default: numpy numbers are written as floats
     return result
@@ -45,12 +45,11 @@ def load_results(runs_dir: Path) -> list:
 
 def comparison_table(results: list, order: list = ()) -> pd.DataFrame:
     """One row per run, in config order, then any other runs (such as the tuned model) by name."""
-    columns = ["test_accuracy", "test_top5_accuracy", "test_precision_macro", "test_recall_macro", "test_f1_macro"]
     rows = [{
         "run": r["run"]["name"], "encoder": r["run"]["encoder"], "mode": r["mode"],
         "trainable_params_M": r["trainable_params"] / 1e6, "total_params_M": r["total_params"] / 1e6,
         "lr": r["run"]["lr"], "epochs": r["run"]["epochs"], "best_epoch": r["best_epoch"],
-        "best_val_accuracy": r["best_val_accuracy"], **{c: r.get(c) for c in columns},
+        "best_val_accuracy": r["best_val_accuracy"],
         "minutes": r["minutes"], "minutes_per_epoch": r["minutes"] / len(r["history"]),
     } for r in results]
     rank = {name: i for i, name in enumerate(order)}
@@ -65,11 +64,11 @@ def report(config: dict, table_dir: Path, fig_dir: Path, runs_dir: Path) -> pd.D
         return pd.DataFrame()
     table = comparison_table(results, [run["name"] for run in config["runs"]])
     table.to_csv(table_dir / "transfer_comparison.csv")
-    print("\n=== transfer learning vs scratch (test is scored once, with the best validation epoch)")
+    print("\n=== transfer learning vs scratch (best validation accuracy)")
     print(table.round(4).T.to_string())
     results.sort(key=lambda r: list(table.index).index(r["run"]["name"]))  # plot in table order
     transfer_plots.plot_learning_curves(results, fig_dir / "transfer_learning_curves.png")
-    transfer_plots.plot_test_scores(table, fig_dir / "transfer_test_scores.png")
+    transfer_plots.plot_validation_scores(table, fig_dir / "transfer_validation_scores.png")
     return table
 
 

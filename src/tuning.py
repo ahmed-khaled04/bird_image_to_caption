@@ -77,7 +77,7 @@ def best_params(config: dict, table_dir: Path) -> dict:
 
 
 def retrain_best(config: dict, train_fn, table_dir: Path, checkpoint_dir: Path = None) -> pd.DataFrame:
-    """Train the best setting for as many epochs as the transfer runs and score it on test. It is saved next to
+    """Train the best setting for as many epochs as the transfer runs and score it on validation. It is saved next to
     the transfer runs, so the untuned run of the same encoder and mode is the baseline it is compared with."""
     encoder = config["encoder"]
     run = {**base_run(config), **best_params(config, table_dir), "epochs": config["final_epochs"],

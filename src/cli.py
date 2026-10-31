@@ -17,6 +17,7 @@ def add_training_arguments(command) -> None:
     command.add_argument("--data-dir", default="data/processed", help="Cleaned splits saved by the clean command")
     command.add_argument("--checkpoint-dir", help="Where to save the trained weights (default outputs/checkpoints)")
     command.add_argument("--limit", type=int, help="Use only the first N images of each split, for a quick check")
+    command.add_argument("--num-workers", type=int, help="Data loader workers (0 avoids shared-memory restrictions)")
     command.add_argument("--dry-run", action="store_true",
                          help="Made-up scores instead of training, to test the pipeline in seconds")
     command.add_argument("--fig-dir", help="Where to save figures (default outputs/figures)")
@@ -83,8 +84,7 @@ def main() -> None:
     augment.add_argument("--seed", type=int, default=0, help="Seed for the image choice and the random augmentation")
     augment.add_argument("--fig-dir", default="outputs/figures", help="Where to save the figure")
 
-    transfer = sub.add_parser("transfer", help="Train the scratch baseline and the pretrained encoders, frozen and "
-                                                "fine-tuned, then compare them on test")
+    transfer = sub.add_parser("transfer", help="Train scratch and pretrained encoders, then compare validation scores")
     transfer.add_argument("--config", default="configs/transfer.yaml", help="Shared settings and the list of runs")
     transfer.add_argument("--runs", nargs="+", help="Only these runs (names from the config), e.g. to split them "
                                                     "between Colab and Kaggle; finished runs are always skipped")
@@ -94,7 +94,7 @@ def main() -> None:
     tune.add_argument("--config", default="configs/tuning.yaml", help="Encoder, epochs per trial and search spaces")
     tune.add_argument("--encoder", help="Override the encoder in the config")
     tune.add_argument("--retrain-best", action="store_true",
-                      help="After tuning: train the best setting fully, score it on test and compare it with the untuned run")
+                      help="After tuning: train the best setting fully and compare validation scores with the untuned run")
     add_training_arguments(tune)
 
     args = parser.parse_args()
@@ -116,10 +116,14 @@ def main() -> None:
                               args.n_augmented, args.image_size, args.seed)
     elif args.command == "transfer":
         config = yaml.safe_load(Path(args.config).read_text())
+        if args.num_workers is not None:
+            config["defaults"]["num_workers"] = args.num_workers
         table_dir, fig_dir, checkpoint_dir = output_dirs(args)
         run_transfer(config, training_runner(args, parser), table_dir, fig_dir, checkpoint_dir, args.runs)
     elif args.command == "tune":
         config = yaml.safe_load(Path(args.config).read_text())
+        if args.num_workers is not None:
+            config["num_workers"] = args.num_workers
         if args.encoder:
             config["encoder"] = args.encoder
         table_dir, fig_dir, checkpoint_dir = output_dirs(args)

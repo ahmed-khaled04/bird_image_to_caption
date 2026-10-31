@@ -28,14 +28,15 @@ def plot_learning_curves(results: list, path: Path) -> None:
     save_figure(fig, path)
 
 
-def plot_test_scores(table: pd.DataFrame, path: Path) -> None:
-    """Test accuracy, top-5 accuracy and macro F1 of every run."""
-    scores = table[["test_accuracy", "test_top5_accuracy", "test_f1_macro"]].dropna()
-    scores.columns = ["accuracy", "top-5 accuracy", "macro F1"]
+def plot_validation_scores(table: pd.DataFrame, path: Path) -> None:
+    """Best validation accuracy of each run."""
+    scores = table[["best_val_accuracy"]].rename(columns={"best_val_accuracy": "accuracy"})
     fig, ax = plt.subplots(figsize=(10, 4.5), layout="constrained")
     scores.plot.bar(ax=ax, rot=30, width=0.8)
     for container in ax.containers:
-        ax.bar_label(container, fmt="%.2f", fontsize=7)
-    ax.set(ylabel="test score", ylim=(0, 1.05), title="Test scores (best validation epoch of each run)")
+        ax.bar_label(container, fmt="%.3f", fontsize=8)
+    ax.get_legend().remove()
+    ax.set(ylabel="validation accuracy", ylim=(0, min(1.05, max(0.05, scores.max().max() * 1.2))),
+           title="Best validation accuracy")
     ax.grid(axis="y", alpha=0.3)
     save_figure(fig, path)
