@@ -1,0 +1,111 @@
+{
+  "checkpoint": "models/efficientnet_b0_efficientnet_b0_finetune_20261031T162003884412Z_9336253ff19d4132b4d5f6c5fe3343b4_best.pth",
+  "run": {
+    "epochs": 10,
+    "batch_size": 32,
+    "image_size": 224,
+    "optimizer": "adamw",
+    "weight_decay": 0.0001,
+    "dropout": 0.3,
+    "seed": 42,
+    "num_workers": 0,
+    "name": "efficientnet_b0_finetune",
+    "encoder": "efficientnet_b0",
+    "freeze": false,
+    "lr": 0.0001,
+    "architecture": "BirdClassifier",
+    "num_classes": 200,
+    "encoder_kwargs": {},
+    "optimizer_defaults": {
+      "lr": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0001,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null,
+      "decoupled_weight_decay": true
+    }
+  },
+  "split": "validation",
+  "scanned": 9,
+  "requested_per_category": 3,
+  "selected": {
+    "correct": 3,
+    "wrong": 3
+  },
+  "examples": [
+    {
+      "index": 0,
+      "true_label": 17,
+      "true_species": "Spotted Catbird",
+      "predicted_label": 17,
+      "predicted_species": "Spotted Catbird",
+      "confidence": 0.5468734502792358,
+      "target_class": 17,
+      "outcome": "correct",
+      "figure": "correct_00000.png"
+    },
+    {
+      "index": 1,
+      "true_label": 50,
+      "true_species": "Horned Grebe",
+      "predicted_label": 52,
+      "predicted_species": "Western Grebe",
+      "confidence": 0.5835748910903931,
+      "target_class": 52,
+      "outcome": "wrong",
+      "figure": "wrong_00001.png"
+    },
+    {
+      "index": 2,
+      "true_label": 4,
+      "true_species": "Crested Auklet",
+      "predicted_label": 4,
+      "predicted_species": "Crested Auklet",
+      "confidence": 0.7087528705596924,
+      "target_class": 4,
+      "outcome": "correct",
+      "figure": "correct_00002.png"
+    },
+    {
+      "index": 3,
+      "true_label": 120,
+      "true_species": "Grasshopper Sparrow",
+      "predicted_label": 120,
+      "predicted_species": "Grasshopper Sparrow",
+      "confidence": 0.7412620186805725,
+      "target_class": 120,
+      "outcome": "correct",
+      "figure": "correct_00003.png"
+    },
+    {
+      "index": 6,
+      "true_label": 150,
+      "true_species": "Black capped Vireo",
+      "predicted_label": 39,
+      "predicted_species": "Olive sided Flycatcher",
+      "confidence": 0.3267075717449188,
+      "target_class": 39,
+      "outcome": "wrong",
+      "figure": "wrong_00006.png"
+    },
+    {
+      "index": 8,
+      "true_label": 151,
+      "true_species": "Blue headed Vireo",
+      "predicted_label": 150,
+      "predicted_species": "Black capped Vireo",
+      "confidence": 0.5718022584915161,
+      "target_class": 150,
+      "outcome": "wrong",
+      "figure": "wrong_00008.png"
+    }
+  ]
+}

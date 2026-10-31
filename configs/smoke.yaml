@@ -1,0 +1,12 @@
+# Real eight-image training check, not a performance experiment or tuning result.
+defaults:
+  epochs: 1
+  batch_size: 4
+  image_size: 224
+  optimizer: adamw
+  weight_decay: 1.0e-4
+  dropout: 0.3
+  seed: 42
+  num_workers: 0
+runs:
+  - {name: scratch_smoke, encoder: scratch, freeze: false, lr: 1.0e-3}

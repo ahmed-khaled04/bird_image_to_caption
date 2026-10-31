@@ -1,0 +1,10 @@
+{
+  "data_dir": "data/processed",
+  "runs_dir": "outputs/my_training/tables/transfer_runs",
+  "device": "mps",
+  "test_run": null,
+  "checkpoints": {
+    "scratch": "/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/models/scratch_scratch_20261031T154728232806Z_855324b0da32471da0b535be9d043dba_best.pth",
+    "efficientnet_b0_finetune": "/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/models/efficientnet_b0_efficientnet_b0_finetune_20261031T162003884412Z_9336253ff19d4132b4d5f6c5fe3343b4_best.pth"
+  }
+}

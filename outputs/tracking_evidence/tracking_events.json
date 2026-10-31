@@ -1,0 +1,2532 @@
+{
+  "outputs/my_training/tables/transfer_runs/efficientnet_b0_finetune.json": {
+    "source_sha256": "22fb7c9b83dce48fed3cb0e68c2ce0d011729ab8b0142e264bde33fc8c463dcc",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 5.100818634033203
+        },
+        {
+          "epoch": 2,
+          "value": 4.026961803436279
+        },
+        {
+          "epoch": 3,
+          "value": 2.917713165283203
+        },
+        {
+          "epoch": 4,
+          "value": 2.1914162635803223
+        },
+        {
+          "epoch": 5,
+          "value": 1.687799096107483
+        },
+        {
+          "epoch": 6,
+          "value": 1.332453966140747
+        },
+        {
+          "epoch": 7,
+          "value": 1.089516043663025
+        },
+        {
+          "epoch": 8,
+          "value": 0.8997573256492615
+        },
+        {
+          "epoch": 9,
+          "value": 0.7468076348304749
+        },
+        {
+          "epoch": 10,
+          "value": 0.6426512598991394
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 4.522508144378662
+        },
+        {
+          "epoch": 2,
+          "value": 3.1561291217803955
+        },
+        {
+          "epoch": 3,
+          "value": 2.272810697555542
+        },
+        {
+          "epoch": 4,
+          "value": 1.730148434638977
+        },
+        {
+          "epoch": 5,
+          "value": 1.3821842670440674
+        },
+        {
+          "epoch": 6,
+          "value": 1.1875954866409302
+        },
+        {
+          "epoch": 7,
+          "value": 1.038591742515564
+        },
+        {
+          "epoch": 8,
+          "value": 0.9546948075294495
+        },
+        {
+          "epoch": 9,
+          "value": 0.8774265050888062
+        },
+        {
+          "epoch": 10,
+          "value": 0.8243621587753296
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.049724843353033066
+        },
+        {
+          "epoch": 2,
+          "value": 0.26277515292167664
+        },
+        {
+          "epoch": 3,
+          "value": 0.4471305012702942
+        },
+        {
+          "epoch": 4,
+          "value": 0.5772405862808228
+        },
+        {
+          "epoch": 5,
+          "value": 0.6711871027946472
+        },
+        {
+          "epoch": 6,
+          "value": 0.7346698045730591
+        },
+        {
+          "epoch": 7,
+          "value": 0.7826257944107056
+        },
+        {
+          "epoch": 8,
+          "value": 0.8158411979675293
+        },
+        {
+          "epoch": 9,
+          "value": 0.8520047068595886
+        },
+        {
+          "epoch": 10,
+          "value": 0.87342768907547
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.2249443233013153
+        },
+        {
+          "epoch": 2,
+          "value": 0.41314029693603516
+        },
+        {
+          "epoch": 3,
+          "value": 0.5567928552627563
+        },
+        {
+          "epoch": 4,
+          "value": 0.6469933390617371
+        },
+        {
+          "epoch": 5,
+          "value": 0.7227171659469604
+        },
+        {
+          "epoch": 6,
+          "value": 0.7416480779647827
+        },
+        {
+          "epoch": 7,
+          "value": 0.7783964276313782
+        },
+        {
+          "epoch": 8,
+          "value": 0.7795100212097168
+        },
+        {
+          "epoch": 9,
+          "value": 0.7873051166534424
+        },
+        {
+          "epoch": 10,
+          "value": 0.8062360882759094
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 10,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"efficientnet_b0_finetune\",\n  \"encoder\": \"efficientnet_b0\",\n  \"freeze\": false,\n  \"lr\": 0.0001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/my_training/tables/transfer_runs/efficientnet_b0_finetune.json",
+      "run/checkpoint": "/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/models/efficientnet_b0_efficientnet_b0_finetune_20261031T162003884412Z_9336253ff19d4132b4d5f6c5fe3343b4_best.pth",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "efficientnet_b0_finetune",
+        "optimizer": "adamw",
+        "lr": 0.0001,
+        "epochs": 10.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "efficientnet_b0",
+        "freeze": 0.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/efficientnet_b0_efficientnet_b0_finetune_22fb7c9b83dce48fed3cb0e68c2ce0d011729ab8b0142e264bde33fc8c463dcc"
+  },
+  "outputs/my_training/tables/transfer_runs/scratch.json": {
+    "source_sha256": "1df1cc276b7efde26392298da289cfca46894421338fb31a7274e0e4d1dbe8ad",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 5.325044631958008
+        },
+        {
+          "epoch": 2,
+          "value": 5.060405731201172
+        },
+        {
+          "epoch": 3,
+          "value": 4.9186506271362305
+        },
+        {
+          "epoch": 4,
+          "value": 4.828332424163818
+        },
+        {
+          "epoch": 5,
+          "value": 4.753492832183838
+        },
+        {
+          "epoch": 6,
+          "value": 4.658875465393066
+        },
+        {
+          "epoch": 7,
+          "value": 4.557624340057373
+        },
+        {
+          "epoch": 8,
+          "value": 4.447052478790283
+        },
+        {
+          "epoch": 9,
+          "value": 4.3472394943237305
+        },
+        {
+          "epoch": 10,
+          "value": 4.2391228675842285
+        },
+        {
+          "epoch": 11,
+          "value": 4.147612571716309
+        },
+        {
+          "epoch": 12,
+          "value": 4.025416851043701
+        },
+        {
+          "epoch": 13,
+          "value": 3.922020196914673
+        },
+        {
+          "epoch": 14,
+          "value": 3.828240394592285
+        },
+        {
+          "epoch": 15,
+          "value": 3.759335517883301
+        },
+        {
+          "epoch": 16,
+          "value": 3.6213438510894775
+        },
+        {
+          "epoch": 17,
+          "value": 3.5498733520507812
+        },
+        {
+          "epoch": 18,
+          "value": 3.458509922027588
+        },
+        {
+          "epoch": 19,
+          "value": 3.3320443630218506
+        },
+        {
+          "epoch": 20,
+          "value": 3.240887403488159
+        },
+        {
+          "epoch": 21,
+          "value": 3.158806324005127
+        },
+        {
+          "epoch": 22,
+          "value": 3.0753281116485596
+        },
+        {
+          "epoch": 23,
+          "value": 2.9897873401641846
+        },
+        {
+          "epoch": 24,
+          "value": 2.8992433547973633
+        },
+        {
+          "epoch": 25,
+          "value": 2.790714979171753
+        },
+        {
+          "epoch": 26,
+          "value": 2.7353107929229736
+        },
+        {
+          "epoch": 27,
+          "value": 2.6451990604400635
+        },
+        {
+          "epoch": 28,
+          "value": 2.5893020629882812
+        },
+        {
+          "epoch": 29,
+          "value": 2.501662015914917
+        },
+        {
+          "epoch": 30,
+          "value": 2.3863322734832764
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 5.0902419090271
+        },
+        {
+          "epoch": 2,
+          "value": 4.960340976715088
+        },
+        {
+          "epoch": 3,
+          "value": 4.846869945526123
+        },
+        {
+          "epoch": 4,
+          "value": 4.845082759857178
+        },
+        {
+          "epoch": 5,
+          "value": 4.677542686462402
+        },
+        {
+          "epoch": 6,
+          "value": 4.6397905349731445
+        },
+        {
+          "epoch": 7,
+          "value": 4.560742378234863
+        },
+        {
+          "epoch": 8,
+          "value": 4.416116237640381
+        },
+        {
+          "epoch": 9,
+          "value": 4.371066093444824
+        },
+        {
+          "epoch": 10,
+          "value": 4.270125865936279
+        },
+        {
+          "epoch": 11,
+          "value": 4.221887111663818
+        },
+        {
+          "epoch": 12,
+          "value": 4.063652992248535
+        },
+        {
+          "epoch": 13,
+          "value": 4.11446475982666
+        },
+        {
+          "epoch": 14,
+          "value": 3.8370442390441895
+        },
+        {
+          "epoch": 15,
+          "value": 3.790485143661499
+        },
+        {
+          "epoch": 16,
+          "value": 3.7624006271362305
+        },
+        {
+          "epoch": 17,
+          "value": 3.605367660522461
+        },
+        {
+          "epoch": 18,
+          "value": 3.554412364959717
+        },
+        {
+          "epoch": 19,
+          "value": 3.5253684520721436
+        },
+        {
+          "epoch": 20,
+          "value": 3.4056432247161865
+        },
+        {
+          "epoch": 21,
+          "value": 3.3256325721740723
+        },
+        {
+          "epoch": 22,
+          "value": 3.205589532852173
+        },
+        {
+          "epoch": 23,
+          "value": 3.302368640899658
+        },
+        {
+          "epoch": 24,
+          "value": 3.18466854095459
+        },
+        {
+          "epoch": 25,
+          "value": 3.080820322036743
+        },
+        {
+          "epoch": 26,
+          "value": 3.158205986022949
+        },
+        {
+          "epoch": 27,
+          "value": 3.0338568687438965
+        },
+        {
+          "epoch": 28,
+          "value": 3.0110867023468018
+        },
+        {
+          "epoch": 29,
+          "value": 2.8875176906585693
+        },
+        {
+          "epoch": 30,
+          "value": 2.853609085083008
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.009630503132939339
+        },
+        {
+          "epoch": 2,
+          "value": 0.019850628450512886
+        },
+        {
+          "epoch": 3,
+          "value": 0.028301887214183807
+        },
+        {
+          "epoch": 4,
+          "value": 0.031053459271788597
+        },
+        {
+          "epoch": 5,
+          "value": 0.037146225571632385
+        },
+        {
+          "epoch": 6,
+          "value": 0.04638364911079407
+        },
+        {
+          "epoch": 7,
+          "value": 0.049724843353033066
+        },
+        {
+          "epoch": 8,
+          "value": 0.062106918543577194
+        },
+        {
+          "epoch": 9,
+          "value": 0.0729166641831398
+        },
+        {
+          "epoch": 10,
+          "value": 0.0866745263338089
+        },
+        {
+          "epoch": 11,
+          "value": 0.09178458899259567
+        },
+        {
+          "epoch": 12,
+          "value": 0.09944968670606613
+        },
+        {
+          "epoch": 13,
+          "value": 0.10966981202363968
+        },
+        {
+          "epoch": 14,
+          "value": 0.13069967925548553
+        },
+        {
+          "epoch": 15,
+          "value": 0.13345125317573547
+        },
+        {
+          "epoch": 16,
+          "value": 0.15841194987297058
+        },
+        {
+          "epoch": 17,
+          "value": 0.16470125317573547
+        },
+        {
+          "epoch": 18,
+          "value": 0.18887577950954437
+        },
+        {
+          "epoch": 19,
+          "value": 0.20027515292167664
+        },
+        {
+          "epoch": 20,
+          "value": 0.21560534834861755
+        },
+        {
+          "epoch": 21,
+          "value": 0.2287735790014267
+        },
+        {
+          "epoch": 22,
+          "value": 0.24823112785816193
+        },
+        {
+          "epoch": 23,
+          "value": 0.2674921452999115
+        },
+        {
+          "epoch": 24,
+          "value": 0.28026729822158813
+        },
+        {
+          "epoch": 25,
+          "value": 0.2897012531757355
+        },
+        {
+          "epoch": 26,
+          "value": 0.3107311427593231
+        },
+        {
+          "epoch": 27,
+          "value": 0.3266509473323822
+        },
+        {
+          "epoch": 28,
+          "value": 0.3329402506351471
+        },
+        {
+          "epoch": 29,
+          "value": 0.3561320900917053
+        },
+        {
+          "epoch": 30,
+          "value": 0.38148584961891174
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.01336302887648344
+        },
+        {
+          "epoch": 2,
+          "value": 0.025612471625208855
+        },
+        {
+          "epoch": 3,
+          "value": 0.03563474491238594
+        },
+        {
+          "epoch": 4,
+          "value": 0.04454343020915985
+        },
+        {
+          "epoch": 5,
+          "value": 0.04788418859243393
+        },
+        {
+          "epoch": 6,
+          "value": 0.05456570163369179
+        },
+        {
+          "epoch": 7,
+          "value": 0.06458797305822372
+        },
+        {
+          "epoch": 8,
+          "value": 0.07126948982477188
+        },
+        {
+          "epoch": 9,
+          "value": 0.0801781713962555
+        },
+        {
+          "epoch": 10,
+          "value": 0.07795099914073944
+        },
+        {
+          "epoch": 11,
+          "value": 0.09910912811756134
+        },
+        {
+          "epoch": 12,
+          "value": 0.10690423101186752
+        },
+        {
+          "epoch": 13,
+          "value": 0.09910912811756134
+        },
+        {
+          "epoch": 14,
+          "value": 0.14922049641609192
+        },
+        {
+          "epoch": 15,
+          "value": 0.13363029062747955
+        },
+        {
+          "epoch": 16,
+          "value": 0.1436525583267212
+        },
+        {
+          "epoch": 17,
+          "value": 0.17706012725830078
+        },
+        {
+          "epoch": 18,
+          "value": 0.1781737208366394
+        },
+        {
+          "epoch": 19,
+          "value": 0.18040089309215546
+        },
+        {
+          "epoch": 20,
+          "value": 0.21714922785758972
+        },
+        {
+          "epoch": 21,
+          "value": 0.21826280653476715
+        },
+        {
+          "epoch": 22,
+          "value": 0.22160355746746063
+        },
+        {
+          "epoch": 23,
+          "value": 0.22605790197849274
+        },
+        {
+          "epoch": 24,
+          "value": 0.24387528002262115
+        },
+        {
+          "epoch": 25,
+          "value": 0.25278395414352417
+        },
+        {
+          "epoch": 26,
+          "value": 0.26057907938957214
+        },
+        {
+          "epoch": 27,
+          "value": 0.2828507721424103
+        },
+        {
+          "epoch": 28,
+          "value": 0.28953230381011963
+        },
+        {
+          "epoch": 29,
+          "value": 0.31514477729797363
+        },
+        {
+          "epoch": 30,
+          "value": 0.30289533734321594
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 30,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"scratch\",\n  \"encoder\": \"scratch\",\n  \"freeze\": false,\n  \"lr\": 0.001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/my_training/tables/transfer_runs/scratch.json",
+      "run/checkpoint": "/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/models/scratch_scratch_20261031T154728232806Z_855324b0da32471da0b535be9d043dba_best.pth",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "scratch",
+        "optimizer": "adamw",
+        "lr": 0.001,
+        "epochs": 30.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "scratch",
+        "freeze": 0.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/scratch_scratch_1df1cc276b7efde26392298da289cfca46894421338fb31a7274e0e4d1dbe8ad"
+  },
+  "outputs/tables/transfer_runs/efficientnet_b0_finetune.json": {
+    "source_sha256": "d2b900c97692bd7eb65f074737c060e8388b0325b99f168804e5b40f6cd87903",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 5.100818634033203
+        },
+        {
+          "epoch": 2,
+          "value": 4.026961803436279
+        },
+        {
+          "epoch": 3,
+          "value": 2.917713165283203
+        },
+        {
+          "epoch": 4,
+          "value": 2.1914162635803223
+        },
+        {
+          "epoch": 5,
+          "value": 1.687799096107483
+        },
+        {
+          "epoch": 6,
+          "value": 1.332453966140747
+        },
+        {
+          "epoch": 7,
+          "value": 1.089516043663025
+        },
+        {
+          "epoch": 8,
+          "value": 0.8997573256492615
+        },
+        {
+          "epoch": 9,
+          "value": 0.7468076348304749
+        },
+        {
+          "epoch": 10,
+          "value": 0.6426512002944946
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 4.522508144378662
+        },
+        {
+          "epoch": 2,
+          "value": 3.15613055229187
+        },
+        {
+          "epoch": 3,
+          "value": 2.272808790206909
+        },
+        {
+          "epoch": 4,
+          "value": 1.7301479578018188
+        },
+        {
+          "epoch": 5,
+          "value": 1.3821841478347778
+        },
+        {
+          "epoch": 6,
+          "value": 1.1875966787338257
+        },
+        {
+          "epoch": 7,
+          "value": 1.0385926961898804
+        },
+        {
+          "epoch": 8,
+          "value": 0.9546945691108704
+        },
+        {
+          "epoch": 9,
+          "value": 0.877426028251648
+        },
+        {
+          "epoch": 10,
+          "value": 0.82436203956604
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.049724843353033066
+        },
+        {
+          "epoch": 2,
+          "value": 0.26277515292167664
+        },
+        {
+          "epoch": 3,
+          "value": 0.4471305012702942
+        },
+        {
+          "epoch": 4,
+          "value": 0.5772405862808228
+        },
+        {
+          "epoch": 5,
+          "value": 0.6711871027946472
+        },
+        {
+          "epoch": 6,
+          "value": 0.7346698045730591
+        },
+        {
+          "epoch": 7,
+          "value": 0.7826257944107056
+        },
+        {
+          "epoch": 8,
+          "value": 0.8158411979675293
+        },
+        {
+          "epoch": 9,
+          "value": 0.8520047068595886
+        },
+        {
+          "epoch": 10,
+          "value": 0.87342768907547
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.2249443233013153
+        },
+        {
+          "epoch": 2,
+          "value": 0.41314029693603516
+        },
+        {
+          "epoch": 3,
+          "value": 0.5567928552627563
+        },
+        {
+          "epoch": 4,
+          "value": 0.6469933390617371
+        },
+        {
+          "epoch": 5,
+          "value": 0.7227171659469604
+        },
+        {
+          "epoch": 6,
+          "value": 0.7416480779647827
+        },
+        {
+          "epoch": 7,
+          "value": 0.7783964276313782
+        },
+        {
+          "epoch": 8,
+          "value": 0.7795100212097168
+        },
+        {
+          "epoch": 9,
+          "value": 0.7873051166534424
+        },
+        {
+          "epoch": 10,
+          "value": 0.8062360882759094
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 10,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"efficientnet_b0_finetune\",\n  \"encoder\": \"efficientnet_b0\",\n  \"freeze\": false,\n  \"lr\": 0.0001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/tables/transfer_runs/efficientnet_b0_finetune.json",
+      "run/checkpoint": "Not recorded in source results",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "efficientnet_b0_finetune",
+        "optimizer": "adamw",
+        "lr": 0.0001,
+        "epochs": 10.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "efficientnet_b0",
+        "freeze": 0.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/efficientnet_b0_efficientnet_b0_finetune_d2b900c97692bd7eb65f074737c060e8388b0325b99f168804e5b40f6cd87903"
+  },
+  "outputs/tables/transfer_runs/efficientnet_b0_frozen.json": {
+    "source_sha256": "50b75afa3a9fd6ea95c5bc2a6b1312e4297857fe3dda86812ec0654264179435",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 3.7010507583618164
+        },
+        {
+          "epoch": 2,
+          "value": 1.8079336881637573
+        },
+        {
+          "epoch": 3,
+          "value": 1.239031195640564
+        },
+        {
+          "epoch": 4,
+          "value": 0.9494751691818237
+        },
+        {
+          "epoch": 5,
+          "value": 0.771196186542511
+        },
+        {
+          "epoch": 6,
+          "value": 0.6584082245826721
+        },
+        {
+          "epoch": 7,
+          "value": 0.5701707601547241
+        },
+        {
+          "epoch": 8,
+          "value": 0.5065972805023193
+        },
+        {
+          "epoch": 9,
+          "value": 0.45287615060806274
+        },
+        {
+          "epoch": 10,
+          "value": 0.400926411151886
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 2.324099540710449
+        },
+        {
+          "epoch": 2,
+          "value": 1.5583302974700928
+        },
+        {
+          "epoch": 3,
+          "value": 1.2622339725494385
+        },
+        {
+          "epoch": 4,
+          "value": 1.1043341159820557
+        },
+        {
+          "epoch": 5,
+          "value": 1.0000286102294922
+        },
+        {
+          "epoch": 6,
+          "value": 0.9551786184310913
+        },
+        {
+          "epoch": 7,
+          "value": 0.9133305549621582
+        },
+        {
+          "epoch": 8,
+          "value": 0.880050539970398
+        },
+        {
+          "epoch": 9,
+          "value": 0.8618115782737732
+        },
+        {
+          "epoch": 10,
+          "value": 0.8437462449073792
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.3250786066055298
+        },
+        {
+          "epoch": 2,
+          "value": 0.6867138147354126
+        },
+        {
+          "epoch": 3,
+          "value": 0.7836084961891174
+        },
+        {
+          "epoch": 4,
+          "value": 0.830974817276001
+        },
+        {
+          "epoch": 5,
+          "value": 0.8626179099082947
+        },
+        {
+          "epoch": 6,
+          "value": 0.8810927867889404
+        },
+        {
+          "epoch": 7,
+          "value": 0.8991745114326477
+        },
+        {
+          "epoch": 8,
+          "value": 0.9139150977134705
+        },
+        {
+          "epoch": 9,
+          "value": 0.9156839847564697
+        },
+        {
+          "epoch": 10,
+          "value": 0.9318003058433533
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.6180400848388672
+        },
+        {
+          "epoch": 2,
+          "value": 0.711581289768219
+        },
+        {
+          "epoch": 3,
+          "value": 0.7316258549690247
+        },
+        {
+          "epoch": 4,
+          "value": 0.7583519220352173
+        },
+        {
+          "epoch": 5,
+          "value": 0.7783964276313782
+        },
+        {
+          "epoch": 6,
+          "value": 0.7639198303222656
+        },
+        {
+          "epoch": 7,
+          "value": 0.7650334239006042
+        },
+        {
+          "epoch": 8,
+          "value": 0.7772828340530396
+        },
+        {
+          "epoch": 9,
+          "value": 0.7795100212097168
+        },
+        {
+          "epoch": 10,
+          "value": 0.7772828340530396
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 10,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"efficientnet_b0_frozen\",\n  \"encoder\": \"efficientnet_b0\",\n  \"freeze\": true,\n  \"lr\": 0.001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/tables/transfer_runs/efficientnet_b0_frozen.json",
+      "run/checkpoint": "Not recorded in source results",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "efficientnet_b0_frozen",
+        "optimizer": "adamw",
+        "lr": 0.001,
+        "epochs": 10.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "efficientnet_b0",
+        "freeze": 1.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/efficientnet_b0_efficientnet_b0_frozen_50b75afa3a9fd6ea95c5bc2a6b1312e4297857fe3dda86812ec0654264179435"
+  },
+  "outputs/tables/transfer_runs/resnet18_finetune.json": {
+    "source_sha256": "0fafeab848bae29ec75eb2b5a7ab9c98ed58859e558ae951a81227f94bc17f8c",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 4.809398651123047
+        },
+        {
+          "epoch": 2,
+          "value": 3.4826560020446777
+        },
+        {
+          "epoch": 3,
+          "value": 2.6625406742095947
+        },
+        {
+          "epoch": 4,
+          "value": 2.084763526916504
+        },
+        {
+          "epoch": 5,
+          "value": 1.655774712562561
+        },
+        {
+          "epoch": 6,
+          "value": 1.3237574100494385
+        },
+        {
+          "epoch": 7,
+          "value": 1.0608516931533813
+        },
+        {
+          "epoch": 8,
+          "value": 0.8773160576820374
+        },
+        {
+          "epoch": 9,
+          "value": 0.726902186870575
+        },
+        {
+          "epoch": 10,
+          "value": 0.620711088180542
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 3.7005720138549805
+        },
+        {
+          "epoch": 2,
+          "value": 2.7107512950897217
+        },
+        {
+          "epoch": 3,
+          "value": 2.105705499649048
+        },
+        {
+          "epoch": 4,
+          "value": 1.7596186399459839
+        },
+        {
+          "epoch": 5,
+          "value": 1.5874093770980835
+        },
+        {
+          "epoch": 6,
+          "value": 1.347933053970337
+        },
+        {
+          "epoch": 7,
+          "value": 1.2287423610687256
+        },
+        {
+          "epoch": 8,
+          "value": 1.1502442359924316
+        },
+        {
+          "epoch": 9,
+          "value": 1.1091572046279907
+        },
+        {
+          "epoch": 10,
+          "value": 1.0649266242980957
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.07841981202363968
+        },
+        {
+          "epoch": 2,
+          "value": 0.3107311427593231
+        },
+        {
+          "epoch": 3,
+          "value": 0.499213844537735
+        },
+        {
+          "epoch": 4,
+          "value": 0.5996462106704712
+        },
+        {
+          "epoch": 5,
+          "value": 0.698113203048706
+        },
+        {
+          "epoch": 6,
+          "value": 0.7696540951728821
+        },
+        {
+          "epoch": 7,
+          "value": 0.8103380799293518
+        },
+        {
+          "epoch": 8,
+          "value": 0.8388364911079407
+        },
+        {
+          "epoch": 9,
+          "value": 0.8708726167678833
+        },
+        {
+          "epoch": 10,
+          "value": 0.8968160152435303
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.31514477729797363
+        },
+        {
+          "epoch": 2,
+          "value": 0.5033407807350159
+        },
+        {
+          "epoch": 3,
+          "value": 0.5991091132164001
+        },
+        {
+          "epoch": 4,
+          "value": 0.6492204666137695
+        },
+        {
+          "epoch": 5,
+          "value": 0.6781737208366394
+        },
+        {
+          "epoch": 6,
+          "value": 0.7138084769248962
+        },
+        {
+          "epoch": 7,
+          "value": 0.7282850742340088
+        },
+        {
+          "epoch": 8,
+          "value": 0.7204899787902832
+        },
+        {
+          "epoch": 9,
+          "value": 0.7572383284568787
+        },
+        {
+          "epoch": 10,
+          "value": 0.7405345439910889
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 10,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"resnet18_finetune\",\n  \"encoder\": \"resnet18\",\n  \"freeze\": false,\n  \"lr\": 0.0001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/tables/transfer_runs/resnet18_finetune.json",
+      "run/checkpoint": "Not recorded in source results",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "resnet18_finetune",
+        "optimizer": "adamw",
+        "lr": 0.0001,
+        "epochs": 10.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "resnet18",
+        "freeze": 0.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/resnet18_resnet18_finetune_0fafeab848bae29ec75eb2b5a7ab9c98ed58859e558ae951a81227f94bc17f8c"
+  },
+  "outputs/tables/transfer_runs/resnet18_frozen.json": {
+    "source_sha256": "578d4b20826aeeab40f89e68e85c305953df550c4266f139560e4022074dd7e9",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 4.70697546005249
+        },
+        {
+          "epoch": 2,
+          "value": 3.142693519592285
+        },
+        {
+          "epoch": 3,
+          "value": 2.48032808303833
+        },
+        {
+          "epoch": 4,
+          "value": 2.080498218536377
+        },
+        {
+          "epoch": 5,
+          "value": 1.845312237739563
+        },
+        {
+          "epoch": 6,
+          "value": 1.6755201816558838
+        },
+        {
+          "epoch": 7,
+          "value": 1.5225284099578857
+        },
+        {
+          "epoch": 8,
+          "value": 1.4535279273986816
+        },
+        {
+          "epoch": 9,
+          "value": 1.3770948648452759
+        },
+        {
+          "epoch": 10,
+          "value": 1.2935562133789062
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 3.4910237789154053
+        },
+        {
+          "epoch": 2,
+          "value": 2.632526159286499
+        },
+        {
+          "epoch": 3,
+          "value": 2.212094783782959
+        },
+        {
+          "epoch": 4,
+          "value": 1.9876011610031128
+        },
+        {
+          "epoch": 5,
+          "value": 1.786161184310913
+        },
+        {
+          "epoch": 6,
+          "value": 1.7175135612487793
+        },
+        {
+          "epoch": 7,
+          "value": 1.6053553819656372
+        },
+        {
+          "epoch": 8,
+          "value": 1.5722627639770508
+        },
+        {
+          "epoch": 9,
+          "value": 1.5129338502883911
+        },
+        {
+          "epoch": 10,
+          "value": 1.5038622617721558
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.08529873937368393
+        },
+        {
+          "epoch": 2,
+          "value": 0.30483490228652954
+        },
+        {
+          "epoch": 3,
+          "value": 0.43101415038108826
+        },
+        {
+          "epoch": 4,
+          "value": 0.5084512829780579
+        },
+        {
+          "epoch": 5,
+          "value": 0.5503144860267639
+        },
+        {
+          "epoch": 6,
+          "value": 0.5784198045730591
+        },
+        {
+          "epoch": 7,
+          "value": 0.6236242055892944
+        },
+        {
+          "epoch": 8,
+          "value": 0.6316823959350586
+        },
+        {
+          "epoch": 9,
+          "value": 0.6454402804374695
+        },
+        {
+          "epoch": 10,
+          "value": 0.663718581199646
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.28173720836639404
+        },
+        {
+          "epoch": 2,
+          "value": 0.45545658469200134
+        },
+        {
+          "epoch": 3,
+          "value": 0.5222716927528381
+        },
+        {
+          "epoch": 4,
+          "value": 0.5311803817749023
+        },
+        {
+          "epoch": 5,
+          "value": 0.5913140177726746
+        },
+        {
+          "epoch": 6,
+          "value": 0.5790646076202393
+        },
+        {
+          "epoch": 7,
+          "value": 0.5890868306159973
+        },
+        {
+          "epoch": 8,
+          "value": 0.6057906746864319
+        },
+        {
+          "epoch": 9,
+          "value": 0.6069042086601257
+        },
+        {
+          "epoch": 10,
+          "value": 0.6180400848388672
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 10,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"resnet18_frozen\",\n  \"encoder\": \"resnet18\",\n  \"freeze\": true,\n  \"lr\": 0.001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/tables/transfer_runs/resnet18_frozen.json",
+      "run/checkpoint": "Not recorded in source results",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "resnet18_frozen",
+        "optimizer": "adamw",
+        "lr": 0.001,
+        "epochs": 10.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "resnet18",
+        "freeze": 1.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/resnet18_resnet18_frozen_578d4b20826aeeab40f89e68e85c305953df550c4266f139560e4022074dd7e9"
+  },
+  "outputs/tables/transfer_runs/resnet50_finetune.json": {
+    "source_sha256": "b09776b1187bec26830c3c533e34f8c49f1b42e25c2c99e36faf2231c054ea70",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 4.464230060577393
+        },
+        {
+          "epoch": 2,
+          "value": 2.667722702026367
+        },
+        {
+          "epoch": 3,
+          "value": 1.7277976274490356
+        },
+        {
+          "epoch": 4,
+          "value": 1.1901010274887085
+        },
+        {
+          "epoch": 5,
+          "value": 0.8995919227600098
+        },
+        {
+          "epoch": 6,
+          "value": 0.6885247826576233
+        },
+        {
+          "epoch": 7,
+          "value": 0.5370035171508789
+        },
+        {
+          "epoch": 8,
+          "value": 0.4480605721473694
+        },
+        {
+          "epoch": 9,
+          "value": 0.372976154088974
+        },
+        {
+          "epoch": 10,
+          "value": 0.32105669379234314
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 3.0495097637176514
+        },
+        {
+          "epoch": 2,
+          "value": 1.8530830144882202
+        },
+        {
+          "epoch": 3,
+          "value": 1.3679616451263428
+        },
+        {
+          "epoch": 4,
+          "value": 1.214029312133789
+        },
+        {
+          "epoch": 5,
+          "value": 1.0038245916366577
+        },
+        {
+          "epoch": 6,
+          "value": 1.0320481061935425
+        },
+        {
+          "epoch": 7,
+          "value": 0.9516263008117676
+        },
+        {
+          "epoch": 8,
+          "value": 0.9181056022644043
+        },
+        {
+          "epoch": 9,
+          "value": 0.9300145506858826
+        },
+        {
+          "epoch": 10,
+          "value": 0.9353520274162292
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.12971697747707367
+        },
+        {
+          "epoch": 2,
+          "value": 0.4241352081298828
+        },
+        {
+          "epoch": 3,
+          "value": 0.612224817276001
+        },
+        {
+          "epoch": 4,
+          "value": 0.7281839847564697
+        },
+        {
+          "epoch": 5,
+          "value": 0.7893081903457642
+        },
+        {
+          "epoch": 6,
+          "value": 0.8386399149894714
+        },
+        {
+          "epoch": 7,
+          "value": 0.8769654035568237
+        },
+        {
+          "epoch": 8,
+          "value": 0.8944575190544128
+        },
+        {
+          "epoch": 9,
+          "value": 0.9135220050811768
+        },
+        {
+          "epoch": 10,
+          "value": 0.9255110025405884
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.3886414170265198
+        },
+        {
+          "epoch": 2,
+          "value": 0.5712695121765137
+        },
+        {
+          "epoch": 3,
+          "value": 0.6514476537704468
+        },
+        {
+          "epoch": 4,
+          "value": 0.6781737208366394
+        },
+        {
+          "epoch": 5,
+          "value": 0.730512261390686
+        },
+        {
+          "epoch": 6,
+          "value": 0.7193763852119446
+        },
+        {
+          "epoch": 7,
+          "value": 0.7394209504127502
+        },
+        {
+          "epoch": 8,
+          "value": 0.7572383284568787
+        },
+        {
+          "epoch": 9,
+          "value": 0.7405345439910889
+        },
+        {
+          "epoch": 10,
+          "value": 0.7527839541435242
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 10,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"resnet50_finetune\",\n  \"encoder\": \"resnet50\",\n  \"freeze\": false,\n  \"lr\": 0.0001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/tables/transfer_runs/resnet50_finetune.json",
+      "run/checkpoint": "Not recorded in source results",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "resnet50_finetune",
+        "optimizer": "adamw",
+        "lr": 0.0001,
+        "epochs": 10.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "resnet50",
+        "freeze": 0.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/resnet50_resnet50_finetune_b09776b1187bec26830c3c533e34f8c49f1b42e25c2c99e36faf2231c054ea70"
+  },
+  "outputs/tables/transfer_runs/resnet50_frozen.json": {
+    "source_sha256": "3d0b188162241503a37b3e8f755e5b0e771dce6c8b4834af171bf2161d0f1b70",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 4.324526309967041
+        },
+        {
+          "epoch": 2,
+          "value": 2.4732933044433594
+        },
+        {
+          "epoch": 3,
+          "value": 1.8605467081069946
+        },
+        {
+          "epoch": 4,
+          "value": 1.5470497608184814
+        },
+        {
+          "epoch": 5,
+          "value": 1.3397961854934692
+        },
+        {
+          "epoch": 6,
+          "value": 1.1918238401412964
+        },
+        {
+          "epoch": 7,
+          "value": 1.0812771320343018
+        },
+        {
+          "epoch": 8,
+          "value": 1.0430753231048584
+        },
+        {
+          "epoch": 9,
+          "value": 0.9768922328948975
+        },
+        {
+          "epoch": 10,
+          "value": 0.9157575964927673
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 2.86911678314209
+        },
+        {
+          "epoch": 2,
+          "value": 2.1146628856658936
+        },
+        {
+          "epoch": 3,
+          "value": 1.8684141635894775
+        },
+        {
+          "epoch": 4,
+          "value": 1.6822776794433594
+        },
+        {
+          "epoch": 5,
+          "value": 1.5167027711868286
+        },
+        {
+          "epoch": 6,
+          "value": 1.4806313514709473
+        },
+        {
+          "epoch": 7,
+          "value": 1.3970403671264648
+        },
+        {
+          "epoch": 8,
+          "value": 1.4313020706176758
+        },
+        {
+          "epoch": 9,
+          "value": 1.3901488780975342
+        },
+        {
+          "epoch": 10,
+          "value": 1.4128254652023315
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.1491745263338089
+        },
+        {
+          "epoch": 2,
+          "value": 0.41843554377555847
+        },
+        {
+          "epoch": 3,
+          "value": 0.5495283007621765
+        },
+        {
+          "epoch": 4,
+          "value": 0.6049528121948242
+        },
+        {
+          "epoch": 5,
+          "value": 0.6523191928863525
+        },
+        {
+          "epoch": 6,
+          "value": 0.6861242055892944
+        },
+        {
+          "epoch": 7,
+          "value": 0.7136399149894714
+        },
+        {
+          "epoch": 8,
+          "value": 0.7159984111785889
+        },
+        {
+          "epoch": 9,
+          "value": 0.7374213933944702
+        },
+        {
+          "epoch": 10,
+          "value": 0.7507861852645874
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.3853006660938263
+        },
+        {
+          "epoch": 2,
+          "value": 0.506681501865387
+        },
+        {
+          "epoch": 3,
+          "value": 0.5233852863311768
+        },
+        {
+          "epoch": 4,
+          "value": 0.5734966397285461
+        },
+        {
+          "epoch": 5,
+          "value": 0.6169264912605286
+        },
+        {
+          "epoch": 6,
+          "value": 0.5879732966423035
+        },
+        {
+          "epoch": 7,
+          "value": 0.6146993041038513
+        },
+        {
+          "epoch": 8,
+          "value": 0.6069042086601257
+        },
+        {
+          "epoch": 9,
+          "value": 0.6314030885696411
+        },
+        {
+          "epoch": 10,
+          "value": 0.6169264912605286
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 10,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"resnet50_frozen\",\n  \"encoder\": \"resnet50\",\n  \"freeze\": true,\n  \"lr\": 0.001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/tables/transfer_runs/resnet50_frozen.json",
+      "run/checkpoint": "Not recorded in source results",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "resnet50_frozen",
+        "optimizer": "adamw",
+        "lr": 0.001,
+        "epochs": 10.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "resnet50",
+        "freeze": 1.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/resnet50_resnet50_frozen_3d0b188162241503a37b3e8f755e5b0e771dce6c8b4834af171bf2161d0f1b70"
+  },
+  "outputs/tables/transfer_runs/scratch.json": {
+    "source_sha256": "6bd7276dea728d6cab9c0767fc1367d345e387ad51b46150c44b83079eeb8d98",
+    "curves": {
+      "loss/train": [
+        {
+          "epoch": 1,
+          "value": 5.324932098388672
+        },
+        {
+          "epoch": 2,
+          "value": 5.0556640625
+        },
+        {
+          "epoch": 3,
+          "value": 4.917616844177246
+        },
+        {
+          "epoch": 4,
+          "value": 4.830239772796631
+        },
+        {
+          "epoch": 5,
+          "value": 4.759551525115967
+        },
+        {
+          "epoch": 6,
+          "value": 4.667114734649658
+        },
+        {
+          "epoch": 7,
+          "value": 4.573836803436279
+        },
+        {
+          "epoch": 8,
+          "value": 4.466405391693115
+        },
+        {
+          "epoch": 9,
+          "value": 4.3663458824157715
+        },
+        {
+          "epoch": 10,
+          "value": 4.262034893035889
+        },
+        {
+          "epoch": 11,
+          "value": 4.170297145843506
+        },
+        {
+          "epoch": 12,
+          "value": 4.051784038543701
+        },
+        {
+          "epoch": 13,
+          "value": 3.9432790279388428
+        },
+        {
+          "epoch": 14,
+          "value": 3.85353684425354
+        },
+        {
+          "epoch": 15,
+          "value": 3.7799510955810547
+        },
+        {
+          "epoch": 16,
+          "value": 3.6475093364715576
+        },
+        {
+          "epoch": 17,
+          "value": 3.568840742111206
+        },
+        {
+          "epoch": 18,
+          "value": 3.4851272106170654
+        },
+        {
+          "epoch": 19,
+          "value": 3.356689929962158
+        },
+        {
+          "epoch": 20,
+          "value": 3.2671782970428467
+        },
+        {
+          "epoch": 21,
+          "value": 3.1963913440704346
+        },
+        {
+          "epoch": 22,
+          "value": 3.1172547340393066
+        },
+        {
+          "epoch": 23,
+          "value": 3.038865804672241
+        },
+        {
+          "epoch": 24,
+          "value": 2.944969654083252
+        },
+        {
+          "epoch": 25,
+          "value": 2.8385045528411865
+        },
+        {
+          "epoch": 26,
+          "value": 2.7764551639556885
+        },
+        {
+          "epoch": 27,
+          "value": 2.689122200012207
+        },
+        {
+          "epoch": 28,
+          "value": 2.6369128227233887
+        },
+        {
+          "epoch": 29,
+          "value": 2.5413122177124023
+        },
+        {
+          "epoch": 30,
+          "value": 2.432950019836426
+        }
+      ],
+      "loss/validation": [
+        {
+          "epoch": 1,
+          "value": 5.081453800201416
+        },
+        {
+          "epoch": 2,
+          "value": 4.949131965637207
+        },
+        {
+          "epoch": 3,
+          "value": 4.8567280769348145
+        },
+        {
+          "epoch": 4,
+          "value": 4.837725639343262
+        },
+        {
+          "epoch": 5,
+          "value": 4.682729244232178
+        },
+        {
+          "epoch": 6,
+          "value": 4.638875961303711
+        },
+        {
+          "epoch": 7,
+          "value": 4.581737518310547
+        },
+        {
+          "epoch": 8,
+          "value": 4.444027900695801
+        },
+        {
+          "epoch": 9,
+          "value": 4.455120086669922
+        },
+        {
+          "epoch": 10,
+          "value": 4.388613224029541
+        },
+        {
+          "epoch": 11,
+          "value": 4.281774520874023
+        },
+        {
+          "epoch": 12,
+          "value": 4.118376731872559
+        },
+        {
+          "epoch": 13,
+          "value": 4.202817440032959
+        },
+        {
+          "epoch": 14,
+          "value": 3.874480724334717
+        },
+        {
+          "epoch": 15,
+          "value": 3.8630495071411133
+        },
+        {
+          "epoch": 16,
+          "value": 3.8045103549957275
+        },
+        {
+          "epoch": 17,
+          "value": 3.674610137939453
+        },
+        {
+          "epoch": 18,
+          "value": 3.580453395843506
+        },
+        {
+          "epoch": 19,
+          "value": 3.592280149459839
+        },
+        {
+          "epoch": 20,
+          "value": 3.470358371734619
+        },
+        {
+          "epoch": 21,
+          "value": 3.391800880432129
+        },
+        {
+          "epoch": 22,
+          "value": 3.287898540496826
+        },
+        {
+          "epoch": 23,
+          "value": 3.322023391723633
+        },
+        {
+          "epoch": 24,
+          "value": 3.266378164291382
+        },
+        {
+          "epoch": 25,
+          "value": 3.1357243061065674
+        },
+        {
+          "epoch": 26,
+          "value": 3.159374713897705
+        },
+        {
+          "epoch": 27,
+          "value": 3.114304780960083
+        },
+        {
+          "epoch": 28,
+          "value": 3.0654678344726562
+        },
+        {
+          "epoch": 29,
+          "value": 2.9231114387512207
+        },
+        {
+          "epoch": 30,
+          "value": 2.951193332672119
+        }
+      ],
+      "accuracy/train": [
+        {
+          "epoch": 1,
+          "value": 0.009433962404727936
+        },
+        {
+          "epoch": 2,
+          "value": 0.019261006265878677
+        },
+        {
+          "epoch": 3,
+          "value": 0.026729559525847435
+        },
+        {
+          "epoch": 4,
+          "value": 0.03282232582569122
+        },
+        {
+          "epoch": 5,
+          "value": 0.03871855512261391
+        },
+        {
+          "epoch": 6,
+          "value": 0.04304245114326477
+        },
+        {
+          "epoch": 7,
+          "value": 0.05011792480945587
+        },
+        {
+          "epoch": 8,
+          "value": 0.06348270177841187
+        },
+        {
+          "epoch": 9,
+          "value": 0.07055817544460297
+        },
+        {
+          "epoch": 10,
+          "value": 0.08608490228652954
+        },
+        {
+          "epoch": 11,
+          "value": 0.0900157243013382
+        },
+        {
+          "epoch": 12,
+          "value": 0.10161163657903671
+        },
+        {
+          "epoch": 13,
+          "value": 0.11320754885673523
+        },
+        {
+          "epoch": 14,
+          "value": 0.125
+        },
+        {
+          "epoch": 15,
+          "value": 0.12991352379322052
+        },
+        {
+          "epoch": 16,
+          "value": 0.1570361703634262
+        },
+        {
+          "epoch": 17,
+          "value": 0.1603773534297943
+        },
+        {
+          "epoch": 18,
+          "value": 0.18199685215950012
+        },
+        {
+          "epoch": 19,
+          "value": 0.19555817544460297
+        },
+        {
+          "epoch": 20,
+          "value": 0.2120676040649414
+        },
+        {
+          "epoch": 21,
+          "value": 0.22484277188777924
+        },
+        {
+          "epoch": 22,
+          "value": 0.24488992989063263
+        },
+        {
+          "epoch": 23,
+          "value": 0.2596305012702942
+        },
+        {
+          "epoch": 24,
+          "value": 0.26847484707832336
+        },
+        {
+          "epoch": 25,
+          "value": 0.28105345368385315
+        },
+        {
+          "epoch": 26,
+          "value": 0.2971698045730591
+        },
+        {
+          "epoch": 27,
+          "value": 0.3180031478404999
+        },
+        {
+          "epoch": 28,
+          "value": 0.3254716992378235
+        },
+        {
+          "epoch": 29,
+          "value": 0.34984275698661804
+        },
+        {
+          "epoch": 30,
+          "value": 0.36772799491882324
+        }
+      ],
+      "accuracy/validation": [
+        {
+          "epoch": 1,
+          "value": 0.01336302887648344
+        },
+        {
+          "epoch": 2,
+          "value": 0.025612471625208855
+        },
+        {
+          "epoch": 3,
+          "value": 0.04008908569812775
+        },
+        {
+          "epoch": 4,
+          "value": 0.05011135712265968
+        },
+        {
+          "epoch": 5,
+          "value": 0.05122494325041771
+        },
+        {
+          "epoch": 6,
+          "value": 0.05345211550593376
+        },
+        {
+          "epoch": 7,
+          "value": 0.05345211550593376
+        },
+        {
+          "epoch": 8,
+          "value": 0.07015590369701385
+        },
+        {
+          "epoch": 9,
+          "value": 0.0634743869304657
+        },
+        {
+          "epoch": 10,
+          "value": 0.07683741301298141
+        },
+        {
+          "epoch": 11,
+          "value": 0.0890868604183197
+        },
+        {
+          "epoch": 12,
+          "value": 0.10356347262859344
+        },
+        {
+          "epoch": 13,
+          "value": 0.09465479105710983
+        },
+        {
+          "epoch": 14,
+          "value": 0.14142538607120514
+        },
+        {
+          "epoch": 15,
+          "value": 0.1269487738609314
+        },
+        {
+          "epoch": 16,
+          "value": 0.13474386930465698
+        },
+        {
+          "epoch": 17,
+          "value": 0.17260579764842987
+        },
+        {
+          "epoch": 18,
+          "value": 0.1692650318145752
+        },
+        {
+          "epoch": 19,
+          "value": 0.1737193763256073
+        },
+        {
+          "epoch": 20,
+          "value": 0.2071269452571869
+        },
+        {
+          "epoch": 21,
+          "value": 0.20489977300167084
+        },
+        {
+          "epoch": 22,
+          "value": 0.21269488334655762
+        },
+        {
+          "epoch": 23,
+          "value": 0.22717149555683136
+        },
+        {
+          "epoch": 24,
+          "value": 0.2461024522781372
+        },
+        {
+          "epoch": 25,
+          "value": 0.25612473487854004
+        },
+        {
+          "epoch": 26,
+          "value": 0.2583518922328949
+        },
+        {
+          "epoch": 27,
+          "value": 0.25612473487854004
+        },
+        {
+          "epoch": 28,
+          "value": 0.2616926431655884
+        },
+        {
+          "epoch": 29,
+          "value": 0.3006681501865387
+        },
+        {
+          "epoch": 30,
+          "value": 0.3051224946975708
+        }
+      ]
+    },
+    "text": {
+      "run/config": "```json\n{\n  \"epochs\": 30,\n  \"batch_size\": 32,\n  \"image_size\": 224,\n  \"optimizer\": \"adamw\",\n  \"weight_decay\": 0.0001,\n  \"dropout\": 0.3,\n  \"seed\": 42,\n  \"num_workers\": 0,\n  \"name\": \"scratch\",\n  \"encoder\": \"scratch\",\n  \"freeze\": false,\n  \"lr\": 0.001\n}\n```",
+      "run/source": "historical:/Users/yousefsameh/Documents/Deep Learning/Major Task/bird_image_to_caption/outputs/tables/transfer_runs/scratch.json",
+      "run/checkpoint": "Not recorded in source results",
+      "run/status": "completed"
+    },
+    "hparams": [
+      {
+        "name": "scratch",
+        "optimizer": "adamw",
+        "lr": 0.001,
+        "epochs": 30.0,
+        "num_workers": 0.0,
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "encoder": "scratch",
+        "freeze": 0.0,
+        "image_size": 224.0,
+        "batch_size": 32.0,
+        "seed": 42.0
+      }
+    ],
+    "curves_match_source": true,
+    "config_matches_source": true,
+    "best_metric_matches_source": true,
+    "scalar_tags": [
+      "loss/train",
+      "loss/validation",
+      "accuracy/train",
+      "accuracy/validation",
+      "summary/best_val_accuracy",
+      "summary/best_epoch",
+      "time/training_seconds",
+      "hparams/best_val_accuracy",
+      "hparams/best_epoch"
+    ],
+    "log_directory": "outputs/tensorboard/imported/scratch_scratch_6bd7276dea728d6cab9c0767fc1367d345e387ad51b46150c44b83079eeb8d98"
+  }
+}
