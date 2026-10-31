@@ -1,0 +1,2 @@
+run,validation_accuracy,test_images,test_loss,test_accuracy,test_top5_accuracy,test_precision_macro,test_recall_macro,test_f1_macro
+efficientnet_b0_finetune,0.8062360801781737,5794,0.864267143518283,0.7707973765964791,0.9516741456679323,0.7782804901888931,0.7724520985719991,0.7678459239311124

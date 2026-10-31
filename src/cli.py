@@ -8,6 +8,7 @@ from src.augmentation import run_augmentation_demo
 from src.cleaning import run_cleaning
 from src.data.loader import load_cub, summarize
 from src.eda import run_caption_eda, run_class_eda, run_image_eda
+from src.evaluation.report import run_evaluation
 from src.experiment import load_processed, synthetic_run, train_run, training_code
 from src.transfer import run_transfer
 from src.tuning import make_objective, retrain_best, run_tuning, synthetic_objective
@@ -105,6 +106,15 @@ def main() -> None:
     gradcam.add_argument("--examples", type=int, default=3, help="Examples per correct/wrong category")
     gradcam.add_argument("--max-images", type=int, help="Optional maximum number of images to scan")
     gradcam.add_argument("--device", default="cpu", choices=["cpu", "cuda", "mps"])
+    evaluation = sub.add_parser("evaluate", help="Score saved checkpoints on validation and one selected run on test")
+    evaluation.add_argument("--data-dir", default="data/processed")
+    evaluation.add_argument("--runs-dir", default="outputs/tables/transfer_runs")
+    evaluation.add_argument("--checkpoint-dir", default="outputs/checkpoints")
+    evaluation.add_argument("--table-dir", default="outputs/tables/evaluation")
+    evaluation.add_argument("--fig-dir", default="outputs/figures/evaluation")
+    evaluation.add_argument("--runs", nargs="+", help="Evaluate only these saved runs")
+    evaluation.add_argument("--test-run", help="Run the final test evaluation for this one validation-selected model")
+    evaluation.add_argument("--num-workers", type=int, default=0)
 
     args = parser.parse_args()
     if args.command == "gradcam":
@@ -145,6 +155,9 @@ def main() -> None:
         else:
             objective = synthetic_objective if args.dry_run else make_objective(config, train_fn)
             run_tuning(config, objective, table_dir, fig_dir)
+    elif args.command == "evaluate":
+        run_evaluation(Path(args.data_dir), Path(args.runs_dir), Path(args.checkpoint_dir),
+                       Path(args.table_dir), Path(args.fig_dir), args.runs, args.test_run, args.num_workers)
 
 
 if __name__ == "__main__":
