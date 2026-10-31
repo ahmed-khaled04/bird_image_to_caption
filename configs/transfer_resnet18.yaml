@@ -5,6 +5,7 @@ defaults:
   batch_size: 32
   image_size: 224
   optimizer: adam
+  weight_decay: 1.0e-4
   dropout: 0.3
   seed: 42
   num_workers: 2 # Colab and Kaggle give 2 CPU cores
