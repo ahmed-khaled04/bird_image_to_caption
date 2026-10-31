@@ -12,11 +12,12 @@ from src.evaluation.report import run_evaluation
 from src.experiment import load_processed, synthetic_run, train_run, training_code
 from src.transfer import run_transfer
 from src.tuning import make_objective, retrain_best, run_tuning, synthetic_objective
+from src.training.checkpoints import checkpoint_directory
 
 
 def add_training_arguments(command) -> None:
     command.add_argument("--data-dir", default="data/processed", help="Cleaned splits saved by the clean command")
-    command.add_argument("--checkpoint-dir", help="Where to save the trained weights (default outputs/checkpoints)")
+    command.add_argument("--checkpoint-dir", help="Optional subfolder inside root models/ (default: root models/)")
     command.add_argument("--limit", type=int, help="Use only the first N images of each split, for a quick check")
     command.add_argument("--num-workers", type=int, help="Data loader workers (0 avoids shared-memory restrictions)")
     command.add_argument("--dry-run", action="store_true",
@@ -26,12 +27,12 @@ def add_training_arguments(command) -> None:
 
 
 def output_dirs(args) -> tuple:
-    """(tables, figures, checkpoints). Test runs (--dry-run, --limit) default to outputs/dry_run, so their results
-    are never mistaken for real ones and skipped as already done."""
+    """Keep preview reports separate; every real training run still saves weights under models/."""
     test_run = args.dry_run or args.limit
-    defaults = ["outputs/dry_run"] * 3 if test_run else ["outputs/tables", "outputs/figures", "outputs/checkpoints"]
-    return tuple(Path(given or default) for given, default in
-                 zip([args.table_dir, args.fig_dir, args.checkpoint_dir], defaults))
+    defaults = ["outputs/dry_run"] * 2 if test_run else ["outputs/tables", "outputs/figures"]
+    reports = tuple(Path(given or default) for given, default in
+                    zip([args.table_dir, args.fig_dir], defaults))
+    return (*reports, checkpoint_directory(args.checkpoint_dir))
 
 
 def training_runner(args, parser):
@@ -153,7 +154,7 @@ def main() -> None:
         if args.retrain_best:
             retrain_best(config, train_fn, table_dir, checkpoint_dir)
         else:
-            objective = synthetic_objective if args.dry_run else make_objective(config, train_fn)
+            objective = synthetic_objective if args.dry_run else make_objective(config, train_fn, checkpoint_dir)
             run_tuning(config, objective, table_dir, fig_dir)
     elif args.command == "evaluate":
         run_evaluation(Path(args.data_dir), Path(args.runs_dir), Path(args.checkpoint_dir),

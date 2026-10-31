@@ -23,6 +23,7 @@ wandb/
 *.ckpt
 *.safetensors
 outputs/checkpoints/
+/models/**/.checkpoint-*.tmp
 
 # editors and OS
 .DS_Store

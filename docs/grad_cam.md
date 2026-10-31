@@ -13,11 +13,14 @@
 From the project root, activate `.venv`, then:
 
 ```bash
-python -m src.cli gradcam --checkpoints outputs/checkpoints/scratch.pt outputs/checkpoints/resnet18_frozen.pt
+python -m src.cli gradcam --checkpoints models/YOUR_SCRATCH_CHECKPOINT.pth models/YOUR_TRANSFER_CHECKPOINT.pth
 open outputs/grad_cam/comparison.html
 ```
 
-Replace the transfer checkpoint with your team's chosen model. Supported encoders are
+Replace both placeholder filenames with the unique paths printed after training, or read
+`checkpoint_path` from the team's experiment JSON / tuning CSV results. Every completed
+training workflow automatically saves its best weights in the root `models/` folder.
+Supported encoders are
 scratch, ResNet18, ResNet50, and EfficientNet-B0. The checkpoint configuration determines
 the architecture and image size. Weight loading is strict; no pretrained download is needed.
 
@@ -31,7 +34,7 @@ Use a separate `--out-dir` for each experiment to retain previous results.
 | Symptom | Action |
 | --- | --- |
 | `data/processed` not found | Ask for the team's cleaned splits or run `python -m src.cli clean`. |
-| Checkpoint not found | Obtain the real trained `.pt` files; dataset cache files are not checkpoints. |
+| Checkpoint not found | Obtain the trained `.pth` files from `models/`; dataset cache files are not checkpoints. Legacy `.pt` files still load. |
 | `run` or `state_dict` missing | Use checkpoints saved by this project's `train_run`; other notebook formats need conversion. |
 | No correct or no wrong examples | Remove `--max-images` to scan more images; record missing categories honestly. |
 | Blank heatmap | Positive weighted activation can be zero for the chosen class; do not manufacture a hotspot. |
