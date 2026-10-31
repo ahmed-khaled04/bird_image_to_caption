@@ -1,0 +1,3 @@
+run,encoder,mode,trainable_params_M,total_params_M,lr,epochs,best_epoch,best_val_accuracy,minutes,minutes_per_epoch
+scratch,scratch,from scratch,4.983528,4.983528,0.001,30,29,0.3151447661469933,10.094411196533231,0.3364803732177744
+efficientnet_b0_finetune,efficientnet_b0,fine-tune,4.263748,4.263748,0.0001,10,10,0.8062360801781737,6.526398918066601,0.65263989180666
