@@ -17,7 +17,7 @@ def read_checkpoint(path):
 def verify_checkpoint(payload, saved, path="checkpoint"):
     """Allow enriched reconstruction metadata, but require every saved setting to match."""
     actual = payload["run"]
-    mismatches = [key for key, value in saved["run"].items() if actual.get(key) != value]
+    mismatches = [key for key, value in saved["run"].items() if key not in actual or actual[key] != value]
     if mismatches:
         raise ValueError(f"{path}: checkpoint settings differ for {', '.join(mismatches)}")
     if "best_epoch" in saved and "epoch" in payload and saved["best_epoch"] != payload["epoch"]:

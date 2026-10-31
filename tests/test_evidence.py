@@ -54,7 +54,8 @@ class EvidenceTests(unittest.TestCase):
             run = {"name": "fixture", "encoder": "scratch"}
             row = {"epoch": 1, "train_loss": 1.2, "val_loss": 1.4,
                    "train_accuracy": 0.6, "val_accuracy": 0.4}
-            with tracking.TensorBoardRun(run, log_root=temporary) as record:
+            # Live training enriches settings with reconstruction metadata.
+            with tracking.TensorBoardRun({**run, "architecture": "BirdClassifier"}, log_root=temporary) as record:
                 record.log_epoch(row)
                 record.complete(1, 0.4, None)
             saved = {"run": run, "history": [{**row, "val_accuracy": 0.5}], "best_val_accuracy": 0.4}

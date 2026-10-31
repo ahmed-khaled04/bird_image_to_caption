@@ -59,7 +59,9 @@ def event_export(directory, saved):
     if config.startswith("```json\n") and config.endswith("\n```"):
         config = config[len("```json\n"):-len("\n```")]
     try:
-        config_match = json.loads(config) == saved["run"]
+        logged_config = json.loads(config)
+        config_match = isinstance(logged_config, dict) and all(
+            key in logged_config and logged_config[key] == value for key, value in saved["run"].items())
     except json.JSONDecodeError:
         config_match = False
     return {"curves": curves, "text": text, "hparams": hparams,
@@ -101,12 +103,13 @@ def export_tracking_evidence(runs_dirs, output_dir, log_root=None, checkpoint_di
             del model
             row.update(checkpoint_status="verified", checkpoint_path=display_path(checkpoint),
                        checkpoint_sha256=file_hash(checkpoint))
-            inventory[row["checkpoint_path"]] = {
+            item = inventory.setdefault(row["checkpoint_path"], {
                 "sha256": row["checkpoint_sha256"], "bytes": checkpoint.stat().st_size,
                 "run": payload["run"], "epoch": payload.get("epoch"),
                 "best_val_accuracy": payload.get("best_val_accuracy"),
-                "class_labels": labels, "verified_sources": [identifier],
-            }
+                "class_labels": labels, "verified_sources": [],
+            })
+            item["verified_sources"].append(identifier)
         except FileNotFoundError as error:
             row["checkpoint_issue"] = str(error)
         except (ValueError, RuntimeError, KeyError) as error:
