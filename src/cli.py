@@ -111,19 +111,31 @@ def main() -> None:
     evaluation = sub.add_parser("evaluate", help="Score saved checkpoints on validation and one selected run on test")
     evaluation.add_argument("--data-dir", default="data/processed")
     evaluation.add_argument("--runs-dir", default="outputs/tables/transfer_runs")
-    evaluation.add_argument("--checkpoint-dir", default="outputs/checkpoints")
+    evaluation.add_argument("--checkpoint-dir", help="Directory containing recovered or relocated checkpoints (also checks models/ and legacy outputs/checkpoints/)")
     evaluation.add_argument("--table-dir", default="outputs/tables/evaluation")
     evaluation.add_argument("--fig-dir", default="outputs/figures/evaluation")
     evaluation.add_argument("--runs", nargs="+", help="Evaluate only these saved runs")
     evaluation.add_argument("--test-run", help="Run the final test evaluation for this one validation-selected model")
     evaluation.add_argument("--num-workers", type=int, default=0)
+    evaluation.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda", "mps"])
+
+    predict = sub.add_parser("predict", help="Classify one image using a trained checkpoint, without loading the dataset")
+    predict.add_argument("--checkpoint", required=True)
+    predict.add_argument("--image", required=True)
+    predict.add_argument("--top-k", type=int, default=5)
+    predict.add_argument("--device", default="cpu", choices=["auto", "cpu", "cuda", "mps"])
+    predict.add_argument("--labels", help="JSON list in class-index order, required only for legacy checkpoints without labels")
+    predict.add_argument("--output", help="Optional JSON prediction output")
 
     tb_import = sub.add_parser("tensorboard-import", help="Import saved training JSON histories into TensorBoard")
     tb_import.add_argument("--runs-dir", nargs="+", default=["outputs/tables/transfer_runs"])
     tb_import.add_argument("--log-dir", help="TensorBoard log root (default: root outputs/tensorboard)")
 
     args = parser.parse_args()
-    if args.command == "gradcam":
+    if args.command == "predict":
+        from src.predict import run_prediction
+        run_prediction(args)
+    elif args.command == "gradcam":
         from src.grad_cam import run_reports
         run_reports(args)
     elif args.command == "eda":
@@ -162,11 +174,13 @@ def main() -> None:
             objective = synthetic_objective if args.dry_run else make_objective(config, train_fn, checkpoint_dir)
             run_tuning(config, objective, table_dir, fig_dir)
     elif args.command == "evaluate":
-        run_evaluation(Path(args.data_dir), Path(args.runs_dir), Path(args.checkpoint_dir),
-                       Path(args.table_dir), Path(args.fig_dir), args.runs, args.test_run, args.num_workers)
+        run_evaluation(Path(args.data_dir), Path(args.runs_dir),
+                       Path(args.checkpoint_dir) if args.checkpoint_dir else None,
+                       Path(args.table_dir), Path(args.fig_dir), args.runs, args.test_run, args.num_workers, args.device)
     elif args.command == "tensorboard-import":
         from src.training.tracking import import_saved_runs
         import_saved_runs(args.runs_dir, args.log_dir)
+
 
 
 if __name__ == "__main__":

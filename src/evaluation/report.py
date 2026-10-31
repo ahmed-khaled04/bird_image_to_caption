@@ -11,19 +11,17 @@ from src.data.loader import class_names
 from src.data.loaders import build_dataloaders
 from src.evaluation.classification import classification_tables, evaluate
 from src.experiment import pick_device
-from src.models.factory import build_classifier
+from src.training.checkpoints import load_checkpoint
+from src.training.checkpoint_refs import read_checkpoint, resolve_checkpoint, verify_class_labels
 from src.visualization.evaluation_plots import plot_top_confusions
 
 
-def load_model(run, checkpoint_dir, device):
-    path = checkpoint_dir / f"{run['name']}.pt"
-    checkpoint = torch.load(path, map_location="cpu", weights_only=True)
-    if checkpoint["run"] != run:
-        raise ValueError(f"settings in {path} do not match the saved run")
-    kwargs = {} if run["encoder"] == "scratch" else {"freeze": run["freeze"], "weights": None}
-    model = build_classifier(run["encoder"], dropout=run["dropout"], **kwargs)
-    model.load_state_dict(checkpoint["state_dict"])
-    return model.to(device)
+def load_model(run, checkpoint_dir, device, saved=None, source_path=None, names=None):
+    path = resolve_checkpoint(saved or {"run": run}, checkpoint_dir, source_path)
+    if names is not None:
+        verify_class_labels(read_checkpoint(path), names)
+    model, _ = load_checkpoint(path, device)
+    return model
 
 
 def confusion_pairs(confusion):
@@ -43,9 +41,10 @@ def save_details(result, names, prefix, table_dir, fig_dir):
     return scores
 
 
-def evaluate_run(saved, split, data, names, checkpoint_dir, table_dir, fig_dir, device, num_workers):
+def evaluate_run(saved, split, data, names, checkpoint_dir, table_dir, fig_dir, device, num_workers,
+                 source_path=None):
     run = saved["run"]
-    model = load_model(run, checkpoint_dir, device)
+    model = load_model(run, checkpoint_dir, device, saved, source_path, names)
     loader = build_dataloaders(
         {split: data[split]}, image_size=run["image_size"], batch_size=run["batch_size"],
         num_workers=num_workers, seed=run["seed"]
@@ -57,7 +56,7 @@ def evaluate_run(saved, split, data, names, checkpoint_dir, table_dir, fig_dir, 
 
 
 def run_evaluation(data_dir: Path, runs_dir: Path, checkpoint_dir: Path, table_dir: Path,
-                   fig_dir: Path, selected_runs=None, test_run=None, num_workers=0):
+                   fig_dir: Path, selected_runs=None, test_run=None, num_workers=0, device="auto"):
     paths = sorted(runs_dir.glob("*.json"))
     saved = {path.stem: json.loads(path.read_text()) for path in paths}
     if selected_runs:
@@ -70,13 +69,16 @@ def run_evaluation(data_dir: Path, runs_dir: Path, checkpoint_dir: Path, table_d
     if test_run and test_run not in saved:
         raise ValueError(f"--test-run {test_run} must be among the evaluated runs")
 
+    # Check every selected reference before doing any expensive evaluation or writing reports.
+    references = {name: resolve_checkpoint(result, checkpoint_dir, runs_dir / f"{name}.json")
+                  for name, result in saved.items()}
     data = load_from_disk(str(data_dir))
     names = class_names(data["validation"])
-    device = pick_device()
+    device = pick_device() if device == "auto" else torch.device(device)
     rows = []
     for name, run_result in saved.items():
         scores = evaluate_run(run_result, "validation", data, names, checkpoint_dir, table_dir,
-                              fig_dir, device, num_workers)
+                              fig_dir, device, num_workers, runs_dir / f"{name}.json")
         row = {
             "run": name, "encoder": run_result["run"]["encoder"], "mode": run_result["mode"],
             "best_epoch": run_result["best_epoch"], "images": scores["images"],
@@ -86,6 +88,7 @@ def run_evaluation(data_dir: Path, runs_dir: Path, checkpoint_dir: Path, table_d
             "trainable_params_M": run_result["trainable_params"] / 1e6,
             "total_params_M": run_result["total_params"] / 1e6,
             "train_minutes": run_result["minutes"],
+            "checkpoint_path": str(references[name]),
         }
         rows.append(row)
         print(f"validated {name}: accuracy {scores['accuracy']:.3f}, macro F1 {scores['f1_macro']:.3f}")
@@ -100,10 +103,13 @@ def run_evaluation(data_dir: Path, runs_dir: Path, checkpoint_dir: Path, table_d
     if test_run:
         winner = saved[test_run]
         scores = evaluate_run(winner, "test", data, names, checkpoint_dir, table_dir,
-                              fig_dir, device, num_workers)
+                              fig_dir, device, num_workers, runs_dir / f"{test_run}.json")
         final = pd.DataFrame([{"run": test_run, "validation_accuracy": table.loc[test_run, "accuracy"],
                                **{f"test_{key}": value for key, value in scores.items()}}]).set_index("run")
         final.to_csv(table_dir / "final_test_metrics.csv")
         print("\n=== final test result")
         print(final.round(3).to_string())
+    provenance = {"data_dir": str(data_dir), "runs_dir": str(runs_dir), "device": str(device),
+                  "test_run": test_run, "checkpoints": {name: str(path) for name, path in references.items()}}
+    (table_dir / "provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
     return table
