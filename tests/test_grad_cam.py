@@ -11,7 +11,7 @@ from datasets import Dataset, Features, ClassLabel, Image as HFImage
 
 from src.evaluation.grad_cam import GradCAM
 from src.models.factory import build_classifier
-from src.grad_cam import generate_report
+from src.grad_cam import generate_report, write_gallery
 
 
 class ToyEncoder(nn.Module):
@@ -86,6 +86,9 @@ class GradCAMTests(unittest.TestCase):
                 self.assertEqual(example["target_class"], 0)
             stored = json.loads((Path(directory) / "scratch/report.json").read_text())
             self.assertEqual(stored, report)
+            gallery = write_gallery([report], [path], directory)
+            self.assertIn("data:image/png;base64,", gallery.read_text())
+            self.assertIn("dataset index 1", gallery.read_text())
             limited = generate_report(path, split, directory, examples=2, max_images=1)
             self.assertEqual(limited["selected"], {"correct": 1, "wrong": 0})
 

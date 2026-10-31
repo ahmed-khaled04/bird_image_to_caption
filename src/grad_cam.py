@@ -1,4 +1,6 @@
 """Checkpoint-based Grad-CAM reports, without training or downloading model weights."""
+import base64
+from html import escape
 import json
 from pathlib import Path
 
@@ -86,8 +88,39 @@ def generate_report(checkpoint, split, out_dir, examples=3, max_images=None, dev
     return report
 
 
+def write_gallery(reports, checkpoints, out_dir):
+    """Create a portable HTML gallery containing the figures, with no external scripts."""
+    sections = []
+    for report, checkpoint in zip(reports, checkpoints):
+        cards = []
+        for record in report["examples"]:
+            path = Path(out_dir) / Path(checkpoint).stem / record["figure"]
+            encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+            caption = escape(f"{record['outcome']} | dataset index {record['index']}")
+            cards.append(f'<figure><img src="data:image/png;base64,{encoded}" '
+                         f'alt="{caption}"><figcaption>{caption}</figcaption></figure>')
+        heading = escape(str(report["run"]["name"]))
+        summary = escape(f"Split: {report['split']}; scanned: {report['scanned']}; selected: {report['selected']}")
+        sections.append(f"<section><h2>{heading}</h2><p>{summary}</p>{''.join(cards)}</section>")
+    page = ("<!doctype html><html lang='en'><meta charset='utf-8'>"
+            "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+            "<title>Grad-CAM comparison</title><style>"
+            "body{font-family:system-ui;max-width:1100px;margin:2rem auto;padding:1rem}"
+            "img{width:100%;height:auto}figure{margin:1rem 0}section{border-top:1px solid #aaa}"
+            "</style><h1>Grad-CAM comparison</h1><p>Predicted-class explanations. Colours are "
+            "normalized per image. Selected examples do not estimate overall accuracy.</p>"
+            + ''.join(sections) + "</html>")
+    path = Path(out_dir) / "comparison.html"
+    path.write_text(page)
+    print("Comparison gallery:", path)
+    return path
+
+
 def run_reports(args):
     data = load_from_disk(args.data_dir)
-    for checkpoint in args.checkpoints:
-        generate_report(checkpoint, data[args.split], args.out_dir, args.examples,
-                        args.max_images, args.device, args.split)
+    if len({Path(path).stem for path in args.checkpoints}) != len(args.checkpoints):
+        raise ValueError("Checkpoint filenames must have distinct stems to avoid overwriting reports")
+    reports = [generate_report(checkpoint, data[args.split], args.out_dir, args.examples,
+                               args.max_images, args.device, args.split)
+               for checkpoint in args.checkpoints]
+    write_gallery(reports, args.checkpoints, args.out_dir)
