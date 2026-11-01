@@ -11,5 +11,5 @@ defaults:
   num_workers: 2 # Colab and Kaggle give 2 CPU cores
 
 runs:
-  - { name: resnet18_frozen_adam, encoder: resnet18, freeze: true, lr: 1.0e-4 } # head only, random start: big steps
-  - { name: resnet50_frozen_adam, encoder: resnet50, freeze: true, lr: 1.0e-4 }
+  - { name: resnet18_frozen_adam, encoder: resnet18, freeze: true, lr: 1.0e-3 } # head only, random start: big steps
+  - { name: resnet50_frozen_adam, encoder: resnet50, freeze: true, lr: 1.0e-3 }
