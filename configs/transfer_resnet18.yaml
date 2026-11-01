@@ -1,5 +1,5 @@
-# ResNet-18 only, frozen vs fine-tune: python -m src.cli transfer --config configs/transfer_resnet18.yaml
-# Add more encoders later by copying a run line (encoder: resnet50 or efficientnet_b0).
+# ResNet-18 and ResNet-50, frozen encoder only: python -m src.cli transfer --config configs/transfer_resnet18.yaml
+# Add more encoders or fine-tune runs later by copying a run line (freeze: false, a smaller lr such as 3.0e-4).
 defaults:
   epochs: 10
   batch_size: 32
@@ -12,9 +12,4 @@ defaults:
 
 runs:
   - { name: resnet18_frozen_adam, encoder: resnet18, freeze: true, lr: 3.0e-3 } # head only, random start: big steps
-  - {
-      name: resnet18_finetune_adam,
-      encoder: resnet18,
-      freeze: false,
-      lr: 3.0e-4,
-    } # whole network: smaller steps
+  - { name: resnet50_frozen_adam, encoder: resnet50, freeze: true, lr: 3.0e-3 }
