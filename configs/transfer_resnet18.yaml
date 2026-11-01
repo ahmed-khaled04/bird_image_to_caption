@@ -1,5 +1,5 @@
-# ResNet-18 and ResNet-50, frozen encoder only: python -m src.cli transfer --config configs/transfer_resnet18.yaml
-# Add more encoders or fine-tune runs later by copying a run line (freeze: false, a smaller lr such as 3.0e-4).
+# ResNet-50, fine-tune vs frozen: python -m src.cli transfer --config configs/transfer_resnet18.yaml
+# Add more encoders (resnet18, efficientnet_b0) by copying a run line; fine-tune runs use freeze: false and a smaller lr.
 defaults:
   epochs: 10
   batch_size: 32
@@ -11,5 +11,10 @@ defaults:
   num_workers: 2 # Colab and Kaggle give 2 CPU cores
 
 runs:
-  - { name: resnet18_frozen_adam, encoder: resnet18, freeze: true, lr: 1.0e-3 } # head only, random start: big steps
-  - { name: resnet50_frozen_adam, encoder: resnet50, freeze: true, lr: 1.0e-3 }
+  - {
+      name: resnet50_finetune_adam,
+      encoder: resnet50,
+      freeze: false,
+      lr: 3.0e-4,
+    } # whole network: smaller steps
+  - { name: resnet50_frozen_adam, encoder: resnet50, freeze: true, lr: 1.0e-3 } # head only, random start: bigger steps
